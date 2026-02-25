@@ -17,14 +17,30 @@ CREATE TABLE empresa (
 	codigo_ativacao VARCHAR(50)
 );
 
+/*
 CREATE TABLE usuario (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	nome VARCHAR(50),
+    sobrenome
 	email VARCHAR(50),
 	senha VARCHAR(50),
 	fk_empresa INT,
 	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
 );
+*/
+
+CREATE TABLE usuarios (
+	id_usuario INT PRIMARY KEY AUTO_INCREMENT,
+    nome_usuario VARCHAR(50),
+    sobrenome_usuario VARCHAR(100),
+    email VARCHAR(50),
+    senha VARCHAR(50),
+    fk_empresa_u INT NOT NULL,
+		CONSTRAINT fk_empresa_usuario
+			FOREIGN KEY(fk_empresa_u) REFERENCES empresa(id)
+) AUTO_INCREMENT = 1000;
+
+select * from usuarios;
 
 CREATE TABLE aviso (
 	id INT PRIMARY KEY AUTO_INCREMENT,
@@ -60,3 +76,9 @@ insert into empresa (razao_social, codigo_ativacao) values ('Empresa 1', 'ED145B
 insert into empresa (razao_social, codigo_ativacao) values ('Empresa 2', 'A1B2C3');
 insert into aquario (descricao, fk_empresa) values ('Aquário de Estrela-do-mar', 1);
 insert into aquario (descricao, fk_empresa) values ('Aquário de Peixe-dourado', 2);
+
+select * from empresa;
+select * from usuario;
+select * from aquario;
+select * from medida;
+select * from alerta;
