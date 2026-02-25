@@ -8,16 +8,16 @@
 
 body {
     font-family: 'Centrale Sans Regular', sans-serif;
-    background: linear-gradient(180deg, #F2F6FD 0%, #BFD1EB 100%);
+    background: linear-gradient(to bottom right, #F2F6FD 0%, #BFD1EB 100%);
 }
 
 /* -------------------------- Start HEADER --------------------------*/
 .header {
     width: 100%;
-    height: 139px;
+    height: 15vh;
     background: #4169E1;
     border-bottom: 0.5em solid transparent;
-    border-image: linear-gradient(to top right, #d8b248, #ffffff) 1;
+    border-image: linear-gradient(to top right, #9e9dad, #ffffff) 1;
 }   
 
 .header .container {
@@ -151,34 +151,44 @@ body {
 /* Cadastro do Aquatech */
 
 .login {
-  height: 70vh;
+  min-height: 70vh;
   background-image: linear-gradient(to top right, #2A76E8, #CBDAEF);
   background-size: cover;
   align-self: center;
+  
 }
 
 .login .container {
   justify-content: center;
-  align-items: center;
-  height: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+.cadastro_img {
+  width: 60%;
+  background-image: url("../assets/monitor_cadastro.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position:top;
+
 }
 
 .card {
-  width: 50%;
-  background-color: #e5e5e5;
-  border-radius: 10px;
+  width: 40%;
+  background-color: #5473d17b;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  color: palevioletred;
+  color: #0D1F44;
   flex-direction: column;
-  height: fit-content;
   padding: 20px 0;
 }
+
 
 .card h2 {
   margin: 0;
   font-size: 30px;
+  text-shadow: -3px 3px 3px #ccd7f0;
 }
 
 .formulario {
@@ -192,12 +202,14 @@ body {
 .formulario span {
   font-size: 15px;
   font-weight: 800;
+  color: #183687;
 }
 
 .formulario input {
-  border: 2px solid #32b9cd;
+  max-width: 30vw;
+  border: 2px solid #355dd4;
   text-align: center;
-  border-radius: 10px;
+  border-radius: 5px;
   margin: 0;
 }
 
@@ -220,17 +232,18 @@ body {
 
 .botao {
   cursor: pointer;
-  font-family: "Barlow", sans-serif;
+  font-family: 'Centrale Sans Regular', sans-serif;
   border: 0;
   border-radius: 5px;
   font-weight: 600;
   font-size: 18px;
   color: #fff;
-  background-color: #ED145B;
+  background-image: linear-gradient(to bottom, #2260E1, #041432) ;
   width: 120px;
   height: 30px;
   align-self: center;
   margin-top: 20px;
+  box-shadow: -3px 3px 3px #acbde6;
 }
 
 .loading-div {
@@ -255,24 +268,10 @@ body {
 
 input {
   margin-bottom: 10px;
-  border: 2px solid #32b9cd;
+  border: 2px solid #306ae8;
   padding: 10px;
   text-align: center;
   border-radius: 10px;
-}
-
-.btn {
-  font-family: 'Centrale Sans Regular', sans-serif;
-  border: 0;
-  border-radius: 5px;
-  font-weight: 600;
-  font-size: 18px;
-  padding: 10px 15px;
-  color: white;
-  background-color: #ED145B;
-  width: 120px;
-  align-self: center;
-  margin-top: 5px;
 }
 
 .loading-div {
@@ -284,6 +283,34 @@ input {
 .loading-div img {
   height: 50px;
   width: 50px;
+}
+
+/* Div msg_senha: */
+.msg_senha {
+  display: none;
+  background-color: #225ee147;
+  color: #0D1F44;
+  width: 20vw;
+  border-radius: 4px;
+  border: #2260E1 3px solid;
+  padding: 10px;
+  margin-right: 10%;
+  position: fixed;
+  top: 45%;
+  left: 53%;
+  z-index: 999;
+  box-shadow: -5px 5px 5px #c7d5f3;
+}
+
+.check {
+  display: flex;
+  flex-direction: row;
+  
+  img {
+    width: 20px;
+    height: 20px;
+    margin-right: 7px;
+  }
 }
 
 /* -------------------------- End CADASTRO --------------------------*/

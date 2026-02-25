@@ -96,9 +96,13 @@
             <span>Nome:</span>
             <input id="input_nome" type="text" placeholder="Seu nome" />
           </div>
+                    <div class="campo">
+            <span>Sobrenome:</span>
+            <input id="input_sobrenome" type="text" placeholder="Seu sobrenome" />
+          </div>
           <div class="campo">
             <span>E-mail:</span>
-            <input id="input_email" type="text" placeholder="meuemail@provedor.com" />
+            <input id="input_email" type="text" placeholder="seuemail@provedor.com" />
           </div>
           <div class="campo">
             <span>Senha:</span>
@@ -117,6 +121,7 @@
 
         <div id="div_erros_login"></div>
       </div>
+      <div class="cadastro_img"></div>
     </div>
   </div>
 
@@ -264,6 +269,7 @@
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
     var nomeVar = input_nome.value;
+    var sobrenomeVar = input_sobrenome.value;
     var emailVar = input_email.value;
     var senhaVar = input_senha.value;
     var confirmacaoSenhaVar = input_confirmacao_senha.value;
@@ -273,6 +279,7 @@
     // Verificando se há algum campo em branco
     if (
       nomeVar == "" ||
+      sobrenomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
       confirmacaoSenhaVar == "" ||
@@ -285,10 +292,18 @@
       finalizarAguardar();
       setInterval(sumirMensagem, 10000);
       return false;
-    } else if (nomeVar.length < 3) {
+    } else if (nomeVar.length < 2) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
-        "O nome deve ter no mínimo 3 caracteres.";
+        "O nome deve ter no mínimo 2 caracteres.";
+
+      finalizarAguardar();
+      setInterval(sumirMensagem, 10000);
+      return false;
+    } else if (sobrenomeVar.length < 2) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "O sobrenome deve ter no mínimo 2 caracteres.";
 
       finalizarAguardar();
       setInterval(sumirMensagem, 10000);
@@ -345,6 +360,7 @@
           // crie um atributo que recebe o valor recuperado aqui
           // Agora vá para o arquivo routes/usuario.js
           nomeServer: nomeVar,
+          sobrenomeServer: sobrenomeVar,
           emailServer: emailVar,
           senhaServer: senhaVar,
           idEmpresaVincularServer: idEmpresaVincular
