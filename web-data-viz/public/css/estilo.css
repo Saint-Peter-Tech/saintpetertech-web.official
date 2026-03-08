@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
 * {
   padding: 0 !important;
+  font-family: 'Poppins';
 }
 
 html{
@@ -12,26 +13,25 @@ html{
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f6f8ff;
 }
 
-none .navbar {
+none .navbar {  
   width: 100%;
 }
 
 .container-fluid{
-    display: flex;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: min-content;
-    font-size: 20px;
-    z-index: 100000;
-    padding: 0 105px;
-    background-color: #4169e1;
-    backdrop-filter: blur(5px);
+  display: flex;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: min-content;
+  font-size: 20px;
+  z-index: 100000;
+  padding: 0 105px;
+  background-color: #2260e1;
+  backdrop-filter: blur(5px);
 }
 
 
@@ -41,17 +41,22 @@ none .navbar {
   margin: 8px 0 8px 25px;
 }
 
+#navbarText ul li a{
+  color: #f6f8ff !important;
+  z-index: 10000000;
+}
+
 .container-fluid .navbar-text{
   margin-right: 25px;
-  color: #e9eff9;
   padding: 3px 10px  !important;
+  color: #e9eff9 !important;
   border: 2px solid #e9eff9 !important;
   border-radius: 5px;
   transition: .2s;
 }
 
 .container-fluid .navbar-text:hover{
-  background-color: #2e72d885 !important;
+  background-color: #2260e1 !important;
   color: #f6f8ff !important;
   font-weight: 200;
   border: 2px solid #f6f8ff !important;
@@ -62,7 +67,7 @@ none .navbar {
 
 /* Estilização dos itens interagiveis dentro da navbar */
 .container-fluid a {
-  color: #2e72d8 !important;
+  color: #2260e1 !important;
   margin-right: 2vw;
   font-weight: 400;
 }
@@ -70,22 +75,73 @@ none .navbar {
 .navbar-expand-lg .navbar-collapse {
 }
 
+
+/* Banner */
 .banner{
   margin: 0 !important;
   width: 100% !important;
-  height: 694px;
+  height: 90vh;
   background-image: url("../assets/banner.png");
   background-position: top;
+  background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 1;
   position: static;
 }
 
-.banner #mensagem{
-  display: block;
-  position: sticky;
-  margin-top: 50vh;
+.banner div{
+  width: 33vw; 
+  position: absolute;
+  height: fit-content;
+  margin: 50vh 0 0 60px; 
+  justify-content: center; 
+  display: flex; 
+  flex-direction: column; 
+  color: #f6f8ff; 
+  font-size: 48px; 
+  font-weight: 400; 
+  line-height: 72px; 
+  word-wrap: break-word; 
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+}
+
+/* Sobre nós */
+
+.container-fluid.text-center{
+  position: static !important;
+  background-color: #f6f8ff !important;
+  margin: 125px 0 100px 0;
+  width: 100vw !important;
+  display: flex;
+}
+.row.row-cols-2{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.cardIndex span{
+  font-size: 40px;
+  font-weight: 400;
+}
+
+.cardIndex p{
+    border: 2px solid #2260e1 !important;
+    width: 80%;
+    justify-self: center;
+    margin-top: 20px;
+    font-size: 35px;
+    font-weight: 300;
+    background-color: #2260e1;
+    text-align: left;
+    color: #f6f8ff;
+    border-radius: 10px;
+    padding: 10px !important;  
+}
+
+.cardIndex{
+  color: #2e72d8 !important;
+  margin: 0 auto;
 }
 
 /* LOGIN */
