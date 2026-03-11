@@ -153,7 +153,10 @@ body {
 }
 
 .cardIndex{
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin: auto;
   
   span{
     color: #2e72d8 !important;
@@ -170,9 +173,11 @@ body {
 
 
 .caixaTextoAzul{
-  margin-top: 40px;
+  display: flex;
   justify-self: center;
-  width: 85%;
+  margin-top: 40px;
+  margin: auto;
+  width: 90vh;
   border: 2px !important;
   font-size: 32px;
   font-weight: 200;
@@ -247,7 +252,7 @@ body {
   border: 5px solid #2A76E8 !important;
   border-radius: 10px;
   padding: 10px;
-  height: 160px;
+  height: 20vh 30vh;
   width: 70%;
   justify-content: space-evenly;
   margin: auto;
@@ -263,6 +268,7 @@ body {
 
 .col{
   height: fit-content !important;
+  align-items: center;
 
   .cardIndex3{
 
@@ -295,7 +301,7 @@ body {
     
     display: flex;
     flex-direction: column;
-    margin: 2vw 0 1vw 0;
+  
     
     
     p{
