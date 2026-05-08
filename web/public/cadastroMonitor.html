@@ -130,8 +130,14 @@
                     <input id="input_qtde_monitores" class="inputCadastro" style="color: #13347b;" placeholder="100" type="number" min="1" max="100">
                 </div>
 
-                <div id="container_componentes" style="display: none;">
-                    <p>Selecione os componentes a serem monitorados nesse monitor:</p>
+                <div id="container_componentes" style="display: none; margin-top: 20px; margin-bottom: 10px;">
+                    <p style="font-weight: bolder; font-size: 20px;">Selecione os componentes a serem monitorados nesse monitor:</p>
+
+                        <div id="div_limite_rede" style="display: block;">
+                            <span>Limite de Velocidade de Banda Larga (MBps):</span>
+                            <input class="inputCadastro" placeholder="10" type="number" id="input_limite_rede" style="margin-bottom: 20px;">
+                        </div>
+                    
 
                     <div class="checkboxCadastro">
                         <label class="checkboxes">
@@ -141,7 +147,7 @@
 
                         <div id="div_limite_cpu" style="display: none;">
                             <span>Limite máximo para alerta (%):</span>
-                            <input class="inputCadastro" type="number" id="input_limite_cpu">
+                            <input class="inputCadastro" placeholder="70%" type="number" id="input_limite_cpu">
                         </div>
                     </div>
 
@@ -153,7 +159,7 @@
 
                         <div id="div_limite_ram" style="display: none;">
                             <span>Limite máximo para alerta (%):</span>
-                            <input class="inputCadastro" type="number" id="input_limite_ram">
+                            <input class="inputCadastro" placeholder="70%" type="number" id="input_limite_ram">
                         </div>
                     </div>
 
@@ -165,19 +171,7 @@
 
                         <div id="div_limite_disco" style="display: none;">
                             <span>Limite máximo para alerta (%):</span>
-                            <input class="inputCadastro" type="number" id="input_limite_disco">
-                        </div>
-                    </div>
-
-                    <div class="checkboxCadastro">
-                        <label class="checkboxes">
-                            <input class="inputCadastro" type="checkbox" id="check_rede" onchange="verificarCheckboxes()">
-                            <span><b>Rede</b></span>
-                        </label>
-
-                        <div id="div_limite_rede" style="display: none;">
-                            <span>Velocidade de upload e download (Mbps):</span>
-                            <input class="inputCadastro" type="number" id="input_limite_rede">
+                            <input class="inputCadastro" placeholder="70%" type="number" id="input_limite_disco">
                         </div>
                     </div>
 
