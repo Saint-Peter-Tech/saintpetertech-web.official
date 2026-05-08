@@ -26,7 +26,7 @@
       <a href="../public/index.html"
         class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
         style="display: block;">
-        <img width="100%" src="../public/assets/Identidade Visual/LogoWritten.png" id="logo_navbar" alt="">
+        <img width="100%" src="/assets/Identidade Visual/LogoWritten.png" id="logo_navbar" alt="">
       </a>
 
       <a href="../index.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
@@ -76,7 +76,7 @@
           data-bs-toggle="dropdown" aria-expanded="false">
           <img src="https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png" alt="" width="32" height="32"
             class="rounded-circle me-2">
-          <span class="description" style="color: #13347b;" id="b_usuario">Usuário</span>
+          <span class="description" style="color: #13347b;" id="b_usuario"></span>
         </a>
         <ul class="dropdown-menu dropdown-menu text-small menu-dropdown" aria-labelledby="dropdownUser1">
           <li>
@@ -157,10 +157,14 @@
       </div>
     </div>
   </main>
+  <script src="../js/sessao.js"></script>
 </body>
 
 <script>
-  window.onload = listarHospitais
+  window.onload = function() {
+    validarSessao();
+    listarHospitais();
+};
 
   function listarHospitais() {
     var idEmpresa = sessionStorage.FK_EMPRESA

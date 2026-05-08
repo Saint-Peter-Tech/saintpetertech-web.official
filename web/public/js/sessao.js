@@ -2,13 +2,38 @@
 function validarSessao() {
     var email = sessionStorage.EMAIL_USUARIO;
     var nome = sessionStorage.NOME_USUARIO;
+    var adm = sessionStorage.FK_ADM;
 
     var b_usuario = document.getElementById("b_usuario");
+    var be_usuario = document.getElementById("be_usuario");
 
     if (email != null && nome != null) {
-        b_usuario.innerHTML = nome;
+        if (b_usuario != null) {
+            b_usuario.innerHTML = nome;
+        }
+        if (be_usuario != null) {
+            be_usuario.innerHTML = nome;
+        }
     } else {
         window.location = "../login.html";
+    }
+
+   var botaoCadastrar = document.getElementById("botaoCadastrarFunc");
+
+    if (botaoCadastrar != null && adm == "null") {
+    botaoCadastrar.style.display = "block";
+    }
+
+    var botaoAddMon = document.getElementById("botaoAddMon");
+    
+    if(botaoAddMon != null && adm == "null") {
+        botaoAddMon.style.display = "block";
+    }
+
+    var adicionarFuncionarioButton = document.getElementById("adicionarFuncionarioButton");
+
+    if(adicionarFuncionarioButton != null && adm == "null") {
+        adicionarFuncionarioButton.style.display = "block";
     }
 }
 

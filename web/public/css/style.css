@@ -115,7 +115,7 @@ body {
   font-size: 4vh;
   font-weight: bold;
   transition: transform 0.3s ease;
-  cursos: pointer;
+  cursor: pointer;
 }
 
 .animacao:hover {
@@ -218,62 +218,87 @@ footerColor {
   font-weight: bold;
 }
 
-/* aqui termina o novo estilo do index */
-
-/* estilo do cadastroFuncionario */
-.login {
-  color: #13347b;
-  padding: 2%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .login .container {
-  display: flex;
-  justify-content: center;
-  padding: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
 }
 
 .cardFormulario {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  background-color: white;
-  padding: 5%;
-  transition: 0.3s ease transform;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #ffffff !important;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(34, 96, 225, 0.1);
+    border: 1px solid #E1E8EF;
+    transition: 0.3s ease transform;
 }
 
 .cardFormulario:hover{
   transform: scale(1.01);
 }
 
-.campo {
-  margin-top: 2%;
-  margin-bottom: 2%;
+.campos {
+    width: 100%;
+    max-width: 700px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1947A6;
+    margin-bottom: 20px;
+}
+
+.campos input, .campos select {
+    width: 100% !important;
+    height: 65px;
+    font-size: 20px;
+    border-radius: 15px;
+    border: 2px solid #E1E8EF;
+    padding: 0 20px;
+    background-color: #F8FAFF;
+    transition: 0.3s ease;
 }
 
 .inputCadastro {
-  border-radius: 10px;
-  border: 1px solid #828282;
-  width: 60%;
-  padding: 0.8%;
+  width: 50vh;
+  text-align: center;       
+  height: 50%;            
+  padding: 0 20px;       
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;  
+  color: #1947A6;
+  border-radius: 12px;
+  border: 2px solid #E1E8EF;
+  background-color: #F8FAFF;
+  display: block;
+  margin: 0 auto;
+  outline: none;
+  transition: all 0.3s ease;
 }
 
 .selectCadastro {
-  border: none;
+  border: 2px solid #E1E8EF;
+  text-align: center;
+  margin-top: 10px;
+  background-color: #F8FAFF;
   border-radius: 10px;
-  width: 60%;
+  width: 100%;
+  max-width: 400px;
   height: 32px;
   color: #13347b;
+  margin-bottom: 10px;
 }
 
 .botaoCadastrar {
   border-radius: 10px;
   border: #13347b 2px solid;
   background-color: transparent;
-  width: 30%;
+  width: 25vh;
   height: 32px;
   color: #13347b;
   transition: transform 0.3s ease;
@@ -293,4 +318,12 @@ footerColor {
 
 .checkboxes{
   width: 110px;
+}
+
+/* Estilizando o quadrado do checkbox no cadastro de monitores */
+.checkboxes input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    vertical-align: middle;
 }

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Funcionários | SPT</title>
+    <link rel="icon" href="../assets/LogoClara.png" />
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -92,7 +93,7 @@
                     data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png" alt="" width="32"
                         height="32" class="rounded-circle me-2">
-                    <span class="description" style="color: #13347b;" id="b_usuario">Usuário</span>
+                    <span class="description" style="color: #13347b;" id="b_usuario"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu text-small menu-dropdown" aria-labelledby="dropdownUser1">
                     <li>
@@ -124,7 +125,7 @@
 
     <div class="container-fluid" style="width: 60%; margin-left: 260px;">
 
-        <div class="botaoAdicionarMonitor" style="width: 210px!important;">
+        <div class="botaoAdicionarMonitor" style="width: 210px!important; display: none;" id="adicionarFuncionarioButton">
             <a style="color: white; text-decoration: none;" href="../cadastroFuncionario.html">
                 <i class="fa-solid fa-plus"></i>
                 Adicionar funcionário
@@ -210,11 +211,16 @@
     </div>
     <!-- links javascript boostrap tabela -->
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="../js/sessao.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.datatables.net/2.3.7/js/dataTables.js"></script>
     <script src="https://cdn.datatables.net/2.3.7/js/dataTables.bootstrap5.js"></script>
 
     <script>
+        window.onload = function() {
+    validarSessao();
+    };
+
         $(document).ready(function () {
             $('#example').DataTable({
                 language: {

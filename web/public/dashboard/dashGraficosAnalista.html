@@ -73,7 +73,7 @@
                     data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png" alt="" width="32"
                         height="32" class="rounded-circle me-2">
-                    <span class="description" style="color: #13347b;" id="b_usuario">Usuário</span>
+                    <span class="description" style="color: #13347b;" id="b_usuario"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu text-small menu-dropdown" aria-labelledby="dropdownUser1">
                     <li>
@@ -240,7 +240,7 @@
 
                                         <div>
                                             <a class="botaoDetalhes"
-                                                href="./dashboardMonitorEspecificoAnalista.html">Ver Detalhes</a>
+                                                href="./dashboardMonitorEspecifico.html">Ver Detalhes</a>
                                         </div>
                                     </div>
                                 </span>
@@ -255,7 +255,7 @@
                                             </div>
                                             <div>
                                                 <a class="botaoDetalhes"
-                                                    href="./dashboardMonitorEspecificoAnalista.html">Ver
+                                                    href="./dashboardMonitorEspecifico.html">Ver
                                                     Detalhes</a>
                                             </div>
                                         </div>
@@ -272,7 +272,7 @@
                                             </div>
                                             <div>
                                                 <a class="botaoDetalhes"
-                                                    href="./dashboardMonitorEspecificoAnalista.html">Ver
+                                                    href="./dashboardMonitorEspecifico.html">Ver
                                                     Detalhes</a>
                                             </div>
                                         </div>
@@ -290,10 +290,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <script src="../js/sessao.js"></script>
 
 </body>
 
 <script>
+    window.onload = function() {
+    validarSessao();
+};
 
     const ctx = document.getElementById('canvaDonut');
 

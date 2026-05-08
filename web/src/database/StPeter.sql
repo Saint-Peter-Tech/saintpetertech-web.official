@@ -107,15 +107,7 @@ INSERT INTO empresas VALUES
 	'00000000001', 
 		'Saint Peter Tecnologia Ltda, SP Technology Serviços de Informática',
 			'saintpetertechnology@saintpeter.com');
-            
-INSERT INTO usuarios (fk_adm, fk_empresa, nome_usuario, email, senha, cpf) VALUES
-(NULL, 
-	1, 
-		'Suporte Saint Peter', 
-			'suporte@saintpeter.com', 
-				'SaintPeterTech@2026', 
-					'13509417003');
-            
+
 INSERT INTO componentes (nome_componente, tipo, unidade_medida) VALUES
 ('CPU', 'Hardware', '%'),
 ('RAM', 'Hardware', '%'),
@@ -159,13 +151,13 @@ VALUES
 INSERT INTO monitores 
 (fk_unidade, fk_empresa, dtFabricacao, dtManutencao, status_monitor)
 VALUES
-(1, 2, '2024-01-01', '2025-01-01', 'Ativo'),
-(1, 2, '2024-02-01', '2025-02-01', 'Ativo'),
-(1, 2, '2024-03-01', '2025-03-01', 'Ativo'),
+(1, 2, '2024-01-01', '2025-01-01', 'Inativo'),
+(1, 2, '2024-02-01', '2025-02-01', 'Inativo'),
+(1, 2, '2024-03-01', '2025-03-01', 'Inativo'),
 
-(2, 3, '2024-01-01', '2025-01-01', 'Ativo'),
-(2, 3, '2024-02-01', '2025-02-01', 'Ativo'),
-(2, 3, '2024-03-01', '2025-03-01', 'Ativo');
+(2, 3, '2024-01-01', '2025-01-01', 'Inativo'),
+(2, 3, '2024-02-01', '2025-02-01', 'Inativo'),
+(2, 3, '2024-03-01', '2025-03-01', 'Inativo');
 
 INSERT INTO componente_monitor (fk_componente, fk_monitor, limite)
 VALUES
@@ -175,3 +167,21 @@ VALUES
 (1,4,80),(2,4,75),(3,4,70),(4,4,10),
 (1,5,80),(2,5,75),(3,5,70),(4,5,10),
 (1,6,80),(2,6,75),(3,6,70),(4,6,10);
+
+INSERT INTO usuarios (fk_adm, fk_empresa, nome_usuario, email, senha, cpf) VALUES
+(
+    NULL,
+    1,
+    'Suporte Saint Peter',
+    'suporte@saintpeter.com',
+    'SaintPeterTech@2026',
+    '13509417003'
+),
+(
+    NULL,
+    2,
+    'Dev',
+    'admin',
+    'admin',
+    '12345678901'
+);

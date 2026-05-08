@@ -87,12 +87,10 @@ body {
         }
     }
 
-/* Estilização dos itens interagiveis dentro da navbar */
 .container-fluid a {
   color: #2260e1 !important;
   font-weight: 400;
 }
-/* Alinhamento dos itens dentro da navbar */
 .navbar-expand-lg .navbar-collapse {
   display: flex;
   justify-content: center;
@@ -126,16 +124,63 @@ body {
 .todo {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: stretch;
     height: 100vh;
+    padding-top: 70px;
+}
+
+.todo, .login {
+    background-image: radial-gradient(#2260e105 2px, transparent 2px);
+    background-size: 30px 30px;
 }
 
 .imagem {
     display: flex;
     background-image: url(../assets/tela_fundo_formulario.jpg);
-    width: 100vh;
-    height: 100vh;
-    padding-right: 650px;
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-right: #2267F9 solid 4px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    min-width: 450px; 
+    gap: 30px;
+    background-color: #f6f8ff;
+}
+
+.campos input {
+    display: flex;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 550px;
+    height: 55px;
+    border: 2px solid #2260E1;
+    outline: none;
+    padding-left: 15px;
+    font-size: 18px;
+    color: #1947A6;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.campos input:focus {
+    border-color: #ffd500;
+    box-shadow: 0 0 10px rgba(34, 96, 225, 0.2);
+    transform: scale(1.01);
+}
+
+.campos input::placeholder {
+    font-size: 16px;
+    color: #a0b3d9;
 }
 
 .container {
@@ -172,7 +217,6 @@ body {
 }
 
 .status img {
-    /* width: 250px; */
     height: 40px;
 }
 
@@ -186,8 +230,11 @@ body {
     display: flex;
     flex-direction: column;
     font-size: 20px;
+    font-weight: 600;
     color: #1947A6;
-    gap: 3px;
+    gap: 8px;
+    width: 100%;
+    max-width: 550px;
 }
 
 .campos input {
@@ -213,13 +260,17 @@ body {
 .botao button {
     background-color: #2260E1;
     font-family: 'Poppins', sans-serif;
-    width: 60%;
+    width: 100%;
+    max-width: 350px;
     height: 60px;
     color: white;
-    border-radius: 10px;
+    border-radius: 12px;
     border: 0px;
-    font-size: 20px;
+    font-size: 22px;
+    font-weight: 700;
+    cursor: pointer;
     transition: 0.3s ease;
+    box-shadow: 0 4px 15px rgba(34, 96, 225, 0.3);
 }
 
 .botao button:hover{
@@ -319,3 +370,44 @@ body {
         margin-top: 40px;
     }
 }
+
+.header-login {
+  width: 100%;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 60px;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.logo-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.logo-header img {
+  width: 55px;
+}
+
+.nav-header a {
+  color: white;
+  text-decoration: none;
+  margin-left: 25px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav-header a:hover {
+  color: #ffed28;
+}
+
