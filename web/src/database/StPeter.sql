@@ -1,7 +1,7 @@
-Create database SaintPeter;
+Create DATABASE IF NOT EXISTS SaintPeter;
 Use SaintPeter;
 
-Create table empresas
+CREATE TABLE IF NOT EXISTS empresas
 (id_empresa INT PRIMARY KEY AUTO_INCREMENT,
 cnpj_empresa char(14) NOT NULL UNIQUE,
 telefone_empresa char(11) NOT NULL UNIQUE,
@@ -9,7 +9,7 @@ razao_social VARCHAR(100) NOT NULL UNIQUE,
 email_empresa VARCHAR(45) NOT NULL UNIQUE
 )AUTO_INCREMENT = 2;
 
-Create table usuarios
+CREATE TABLE IF NOT EXISTS usuarios
 (id_usuario INT PRIMARY KEY AUTO_INCREMENT,
 fk_adm int,
 fk_empresa int NOT NULL,
@@ -27,7 +27,7 @@ constraint fk_empresaUser
 		references empresas(id_empresa)
 );
 
-Create table hospitais
+CREATE TABLE IF NOT EXISTS hospitais
 (id_hospital INT PRIMARY KEY AUTO_INCREMENT,
 fk_empresa INT NOT NULL,
 nome_hospital VARCHAR(50) NOT NULL,
@@ -39,7 +39,7 @@ constraint fk_hospitalEmpresa
 		references empresas(id_empresa)
 );
 
-Create table unidades
+CREATE TABLE IF NOT EXISTS unidades
 (id_unidade INT PRIMARY KEY AUTO_INCREMENT,
 fk_hospital INT NOT NULL,
 cep CHAR(8) NOT NULL,
@@ -56,14 +56,15 @@ constraint fk_hospitalUnidade
 		references hospitais(id_hospital)
 );
 
-Create table componentes
+CREATE TABLE IF NOT EXISTS componentes
 (id_componente INT PRIMARY KEY AUTO_INCREMENT,
 nome_componente VARCHAR(50) NOT NULL UNIQUE,
 tipo VARCHAR(50) NOT NULL,
-unidade_medida VARCHAR(50) NOT NULL
+unidade_medida VARCHAR(50) NOT NULL,
+comando_psutil VARCHAR(100)
 );
 
-Create table monitores
+CREATE TABLE IF NOT EXISTS monitores
 (id_monitor INT PRIMARY KEY AUTO_INCREMENT,
 fk_unidade INT NOT NULL,
 fk_empresa INT NOT NULL,
@@ -83,7 +84,7 @@ constraint fk_empresaMonitor
 		references empresas(id_empresa)
 );
 
-Create table componente_monitor
+CREATE TABLE IF NOT EXISTS componente_monitor
 (fk_componente INT,
 fk_monitor INT,
 limite DECIMAL(5,2),
@@ -102,19 +103,19 @@ constraint fk_componente
 PRIMARY KEY(fk_componente, fk_monitor)
 );
 
-INSERT INTO empresas VALUES
+INSERT IGNORE INTO empresas VALUES
 (1, '00000000000001', 
 	'00000000001', 
 		'Saint Peter Tecnologia Ltda, SP Technology Serviços de Informática',
 			'saintpetertechnology@saintpeter.com');
 
-INSERT INTO componentes (nome_componente, tipo, unidade_medida) VALUES
-('CPU', 'Hardware', '%'),
-('RAM', 'Hardware', '%'),
-('Disco', 'Hardware', '%'),
-('Rede', 'Rede', 'Megabit');
+INSERT IGNORE INTO componentes (nome_componente, tipo, unidade_medida, comando_psutil) VALUES
+('CPU', 'Hardware', '%', 'cpu_percent(interval=1)'),
+('RAM', 'Hardware', '%', 'virtual_memory().percent'),
+('Disco', 'Hardware', '%', "disk_usage('/')"),
+('Rede', 'Rede', 'Megabit', NULL);
 
-INSERT INTO empresas 
+INSERT IGNORE INTO empresas 
 (cnpj_empresa, telefone_empresa, razao_social, email_empresa)
 VALUES
 ('00000000000002', 
@@ -126,40 +127,39 @@ VALUES
  'HealthTech Monitoramento Hospitalar LTDA', 
  'contato@healthtech.com');
 
-INSERT INTO hospitais 
+INSERT IGNORE INTO hospitais 
 (fk_empresa, nome_hospital, cnpj_hospital, telefone_hospital)
 VALUES
 (2, 'Hospital Nova Esperança', '20000000000001', '11444455551'),
 (2, 'Hospital Bem Estar', '20000000000002', '11444455552');
 
-INSERT INTO hospitais 
+INSERT IGNORE INTO hospitais 
 (fk_empresa, nome_hospital, cnpj_hospital, telefone_hospital)
 VALUES
 (3, 'Hospital Santa Helena', '30000000000001', '11555566661'),
 (3, 'Hospital Central Brasil', '30000000000002', '11555566662');
 
-INSERT INTO unidades 
+INSERT IGNORE INTO unidades 
 (fk_hospital, cep, rua, numero, cidade, nome_unidade, email_responsavel, telefone_responsavel, rede_total)
 VALUES
 (1, '01001000', 'Rua A', '100', 'São Paulo', 'Unidade SP - Empresa 2', 'resp2@empresa.com', '11911111111', 1000);
 
-INSERT INTO unidades 
+INSERT IGNORE INTO unidades 
 (fk_hospital, cep, rua, numero, cidade, nome_unidade, email_responsavel, telefone_responsavel, rede_total)
 VALUES
 (3, '02002000', 'Rua B', '200', 'São Paulo', 'Unidade SP - Empresa 3', 'resp3@empresa.com', '11922222222', 1000);
 
-INSERT INTO monitores 
+INSERT IGNORE INTO monitores 
 (fk_unidade, fk_empresa, dtFabricacao, dtManutencao, status_monitor)
 VALUES
 (1, 2, '2024-01-01', '2025-01-01', 'Inativo'),
 (1, 2, '2024-02-01', '2025-02-01', 'Inativo'),
 (1, 2, '2024-03-01', '2025-03-01', 'Inativo'),
-
 (2, 3, '2024-01-01', '2025-01-01', 'Inativo'),
 (2, 3, '2024-02-01', '2025-02-01', 'Inativo'),
 (2, 3, '2024-03-01', '2025-03-01', 'Inativo');
 
-INSERT INTO componente_monitor (fk_componente, fk_monitor, limite)
+INSERT IGNORE INTO componente_monitor (fk_componente, fk_monitor, limite)
 VALUES
 (1,1,70),(2,1,85),(3,1,50),(4,1,5),
 (1,2,70),(2,2,85),(3,2,50),(4,2,5),
@@ -168,11 +168,11 @@ VALUES
 (1,5,80),(2,5,75),(3,5,70),(4,5,10),
 (1,6,80),(2,6,75),(3,6,70),(4,6,10);
 
-INSERT INTO usuarios (fk_adm, fk_empresa, nome_usuario, email, senha, cpf) VALUES
+INSERT IGNORE INTO usuarios (fk_adm, fk_empresa, nome_usuario, email, senha, cpf) VALUES
 (
     NULL,
     1,
-    'Suporte Saint Peter',
+    'Suporte',
     'suporte@saintpeter.com',
     'SaintPeterTech@2026',
     '13509417003'
@@ -180,8 +180,16 @@ INSERT INTO usuarios (fk_adm, fk_empresa, nome_usuario, email, senha, cpf) VALUE
 (
     NULL,
     2,
-    'Dev',
-    'admin',
+    'Gestor',
+    'admin@email.com',
     'admin',
     '12345678901'
+),
+(
+	1,
+	2,
+    'Analista',
+	'analista@email.com',
+	'admin',
+	'12345678902'
 );
