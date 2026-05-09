@@ -21,4 +21,4 @@ function vincularComponente(idMonitor, idComponente, limite) {
 module.exports = {
     cadastrarMonitor,
     vincularComponente
-};
+}; 

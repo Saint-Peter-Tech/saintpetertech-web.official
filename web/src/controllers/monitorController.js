@@ -24,4 +24,4 @@ function cadastrarMonitor(req, res) {
 
 module.exports = {
     cadastrarMonitor
-};
+}; 

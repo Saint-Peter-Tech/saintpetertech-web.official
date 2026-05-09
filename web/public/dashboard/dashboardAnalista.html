@@ -38,7 +38,7 @@
         <img width="100%" src="../assets/Identidade Visual/LogoEscura.png" id="logo_navbar2" alt="">
       </a>
 
-      <a class="nav-link" href="dashGraficosAnalista.html">
+      <a id="navDashInicial" class="nav-link">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid"
           viewBox="0 0 16 16">
           <path
@@ -46,7 +46,7 @@
         </svg>
         <span class="description">Início</span>
       </a>
-      <a class="nav-link" href="./dashboardMonitoresAnalista.html">
+      <a id="navMonitores" class="nav-link" href="./dashboardMonitores.html">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-display"
           viewBox="0 0 16 16">
           <path
@@ -55,7 +55,7 @@
         <span class="description">Monitores</span>
       </a>
 
-      <a class="nav-link" href="./dashboardUnidadesAnalista.html">
+      <a id="navUnidades" class="nav-link" href="./dashboardUnidades.html">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hospital"
           viewBox="0 0 16 16">
           <path
@@ -95,7 +95,7 @@
           <li>
             <hr class="dropdown-divider">
           </li>
-          <li><a class="dropdown-item" style="color: #13347b;" style="color: #13347b;">Sair</a></li>
+          <li><a onclick="limparSessao()" class="dropdown-item" style="color: #13347b;" style="color: #13347b;">Sair</a></li>
         </ul>
       </div>
     </nav>

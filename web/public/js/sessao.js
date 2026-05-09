@@ -35,6 +35,19 @@ function validarSessao() {
     if(adicionarFuncionarioButton != null && adm == "null") {
         adicionarFuncionarioButton.style.display = "block";
     }
+
+    const botaoNavFuncionarios = document.getElementById("navFuncionarios");
+    const botaoNavDashInicial = document.getElementById("navDashInicial");
+
+    if(adm != "null"){
+        botaoNavFuncionarios.style.display = "none"
+        botaoNavDashInicial.href = "./dashboardAnalista.html"
+        
+    } else if (adm == "null") {
+        botaoNavDashInicial.href = "./dashboardGerente.html"
+    } else {
+        botaoNavDashInicial.href = "./dashboardSuporteEmpresa.html"
+    }
 }
 
 function limparSessao() {
