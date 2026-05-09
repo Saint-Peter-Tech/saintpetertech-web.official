@@ -109,7 +109,8 @@
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a onclick="limparSessao()" class="dropdown-item" style="color: #13347b;" style="color: #13347b;">Sair</a></li>
+                    <li><a onclick="limparSessao()" class="dropdown-item" style="color: #13347b;"
+                            style="color: #13347b;">Sair</a></li>
                 </ul>
             </div>
         </nav>
@@ -130,10 +131,8 @@
                         +</option>
                 </select>
 
-                <button class="botaoPesquisar" type="submit">PESQUISAR</button>
-                <button class="botaoPesquisar2" type="submit">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
+                <button class="botaoPesquisar" onclick="listarInfoUnidade()" type="button">PESQUISAR</button>
+                
             </form>
 
             <div class="botaoAdicionarMonitor" id="botaoAddMon" style="display: none; padding-top: 5px;">
@@ -147,8 +146,10 @@
 
             <!-- KPIs -->
         </div>
-        <div style="display: flex; flex-direction: row; gap: 2%;">
-            <div class="kpiQtdMonitor" onclick="window.location.href='./dashboardGerente.html'"">
+        <div style="display: flex; flex-direction: row; gap: 2%;" id="containerCardHospital">
+
+            <!-- 
+            <div class="kpiQtdMonitor">
                 <div class="qtdMonitores">
                     <img height="50px" src="../assets/icones-alerta/unidade-icon.png" alt="">
                     <span class="qtd">
@@ -157,7 +158,6 @@
                     </span>
 
                 </div>
-
                 <div class="nomeLocalizacao">
                     <h4>Einstein - Alphaville</h4>
                     <span style="font-size: 14px!important;">
@@ -196,8 +196,8 @@
                 </div>
             </div>
 
-            <div class="kpiQtdMonitor" onclick="window.location.href='./dashboardGerente.html'"">
-                <div class="qtdMonitores">
+            <div class="kpiQtdMonitor">
+                <div class=" qtdMonitores">
                     <img height="50px" src="../assets/icones-alerta/unidade-icon.png" alt="">
                     <span class="qtd">
                         <h4>10</h4>
@@ -242,11 +242,13 @@
                         </div>
                     </div>
                 </div>
+
+
             </div>
 
-            <div class="kpiQtdMonitor" onclick="window.location.href='./dashboardGerente.html'"">
+            <div class="kpiQtdMonitor">
 
-                <div class="qtdMonitores">
+                <div class=" qtdMonitores">
                     <img height="50px" src="../assets/icones-alerta/unidade-icon.png" alt="">
                     <span class="qtd">
                         <h4>15</h4>
@@ -294,9 +296,9 @@
 
             </div>
 
-            <div class="kpiQtdMonitor" onclick="window.location.href='./dashboardGerente.html'"">
+            <div class="kpiQtdMonitor">
 
-                <div class="qtdMonitores">
+                <div class=" qtdMonitores">
                     <img height="50px" src="../assets/icones-alerta/unidade-icon.png" alt="">
                     <span class="qtd">
                         <h4>10</h4>
@@ -343,8 +345,10 @@
                 </div>
 
             </div>
+            -->
         </div>
 
+        <!-- 
         <div style="display: flex; flex-direction: row; gap: 2%; margin-top: 2%;">
             <div class="kpiQtdMonitor" onclick="window.location.href='./dashboardGerente.html'"">
                 <div class="qtdMonitores">
@@ -542,7 +546,7 @@
 
             </div>
         </div>
-
+         -->
     </main>
 
     <script src="../js/sessao.js"></script>
@@ -554,10 +558,10 @@
 
 
 <script>
-    window.onload = function() {
-    validarSessao();
-    listarHospitais();
-};
+    window.onload = function () {
+        validarSessao();
+        listarHospitais();
+    };
 
     function listarHospitais() {
         var idEmpresa = sessionStorage.FK_EMPRESA
@@ -578,9 +582,93 @@
                     select.appendChild(option);
                 });
 
+                if (hospitais.length > 0) {
+                    sessionStorage.ID_HOSPITAL = hospitais[0].id_hospital;
+                }
+
+                select.addEventListener("change", function () {
+
+                    sessionStorage.ID_HOSPITAL = select.value;
+
+                    console.log("Hospital selecionado:", sessionStorage.ID_HOSPITAL);
+                });
+
             })
             .catch(function (erro) {
                 console.error("Erro ao buscar hospitais:", erro);
             });
     }
+
+    function listarInfoUnidade() {
+        var idHospital = sessionStorage.ID_HOSPITAL;
+
+        fetch(`/hospital/buscarInfoUnidade?idHospital=${idHospital}`)
+            .then(function (resposta) {
+                return resposta.json();
+            })
+            .then(function (hospitais) {
+
+                const containerHospital = document.getElementById("containerCardHospital");
+
+                containerHospital.innerHTML = "";
+
+                hospitais.forEach(hospital => {
+                    containerHospital.innerHTML += `
+                        <div class="kpiQtdMonitor">
+                            <div class="qtdMonitores">
+                                <img height="50px" src="../assets/icones-alerta/unidade-icon.png" alt="">
+                                <span class="qtd">
+                                    <h4>${hospital.qtdMonitores || 0}</h4>
+                                    <span>monitores</span>
+                                </span>
+                            
+                            </div>
+                        
+                            <div class="nomeLocalizacao">
+                                <h4>${hospital.nome_unidade}</h4>
+                                <span style="font-size: 14px!important;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                        <path
+                                            d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10" />
+                                        <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                                    </svg>
+                                    ${hospital.cidade} </span>
+                                
+                                <div class="linha">
+                                    <div class="monitoresAtivos">
+                                        <div> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                                class="bi bi-display" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M0 4s0-2 2-2h12s2 0 2 2v6s0 2-2 2h-4q0 1 .25 1.5H11a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1h.75Q6 13 6 12H2s-2 0-2-2zm1.398-.855a.76.76 0 0 0-.254.302A1.5 1.5 0 0 0 1 4.01V10c0 .325.078.502.145.602q.105.156.302.254a1.5 1.5 0 0 0 .538.143L2.01 11H14c.325 0 .502-.078.602-.145a.76.76 0 0 0 .254-.302 1.5 1.5 0 0 0 .143-.538L15 9.99V4c0-.325-.078-.502-.145-.602a.76.76 0 0 0-.302-.254A1.5 1.5 0 0 0 13.99 3H2c-.325 0-.502.078-.602.145" />
+                                            </svg>
+                                            Ativos
+                                        </div>
+                                        <div>
+                                            90/120
+                                        </div>
+                                    </div>
+                                
+                                    <div class="containerProgress">
+                                        <div class="skillVerde">
+                                            <li>
+                                                <span class="bar">
+                                                    <span class="progressoVerde progVerde"></span>
+                                                </span>
+                                            </li>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        `
+                });
+
+            })
+            .catch(function (erro) {
+                console.error("Erro ao buscar informações para o card de unidades: ", erro);
+            })
+    }
+
+
 </script>

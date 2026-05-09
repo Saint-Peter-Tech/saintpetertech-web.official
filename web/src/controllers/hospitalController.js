@@ -35,7 +35,21 @@ function cadastrarHospital(req, res) {
     });
 }
 
+function buscarInfoUnidade(req, res){
+  var idHospital = req.query.idHospital;
+
+  hospitalModel.buscarInfoUnidade(idHospital)
+    .then(function(resultado){
+      res.json(resultado);
+    })
+    .catch(function (erro){
+      console.log(erro);
+      res.status(500).json(erro.sqlMessage);
+    })
+}
+
 module.exports = {
   buscarHospitais,
-  cadastrarHospital
+  cadastrarHospital,
+  buscarInfoUnidade
 };

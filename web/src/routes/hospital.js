@@ -11,4 +11,8 @@ router.post("/cadastrar", function (req, res) {
     hospitalController.cadastrarHospital(req, res);
 })
 
+router.get("/buscarInfoUnidade", function (req, res){
+    hospitalController.buscarInfoUnidade(req, res);
+})
+
 module.exports = router;
