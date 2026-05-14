@@ -58,6 +58,16 @@
                 </svg>
                 <span class="description">Início</span>
             </a>
+            <a class="nav-link" id="cadastroModelos" href="../cadastroModelo.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-projector" viewBox="0 0 16 16">
+                    <path
+                        d="M14 7.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0M2.5 6a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm0 2a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1z" />
+                    <path
+                        d="M0 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2 1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1H5a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1 2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1z" />
+                </svg>
+                <span class="description">Modelos</span>
+            </a>
             <a class="nav-link" href="./dashboardMonitores.html">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-display"
                     viewBox="0 0 16 16">
@@ -124,7 +134,8 @@
 
     <div class="container-fluid" style="width: 60%; margin-left: 260px;">
 
-        <div class="botaoAdicionarMonitor" style="width: 210px!important; display: none;" id="adicionarFuncionarioButton">
+        <div class="botaoAdicionarMonitor" style="width: 210px!important; display: none;"
+            id="adicionarFuncionarioButton">
             <a style="color: white; text-decoration: none;" href="../cadastroFuncionario.html">
                 <i class="fa-solid fa-plus"></i>
                 Adicionar funcionário
@@ -157,7 +168,7 @@
     <script src="https://cdn.datatables.net/2.3.7/js/dataTables.bootstrap5.js"></script>
 
     <script>
-        window.onload = function() {
+        window.onload = function () {
             validarSessao();
             listarFuncionarios();
         };
