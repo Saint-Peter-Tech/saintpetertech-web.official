@@ -19,8 +19,17 @@ function autenticarcpf(cpf, senha) {
     return database.executar(instrucaoSql);
 }
 
+function listarFuncionariosPorEmpresa(fk_empresa) {
+    var instrucaoSql = `
+        SELECT id_usuario, nome_usuario, email, cpf FROM usuarios WHERE fk_empresa = '${fk_empresa}' AND fk_adm IS NOT NULL;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 
 module.exports = {
     autenticaremail,
-    autenticarcpf
+    autenticarcpf,
+    listarFuncionariosPorEmpresa
 };

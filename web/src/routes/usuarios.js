@@ -11,4 +11,8 @@ router.post("/autenticarcpf", function (req, res) {
     usuarioController.autenticarcpf(req, res);
 });
 
+router.get("/listarFuncionarios", function (req, res) {
+    usuarioController.listarFuncionariosPorEmpresa(req, res);
+});
+
 module.exports = router;
