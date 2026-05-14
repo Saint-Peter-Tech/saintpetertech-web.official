@@ -58,6 +58,16 @@
                 </svg>
                 <span class="description">Início</span>
             </a>
+            <a class="nav-link" id="cadastroModelos" href="../cadastroModelo.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-projector" viewBox="0 0 16 16">
+                    <path
+                        d="M14 7.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0M2.5 6a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm0 2a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1z" />
+                    <path
+                        d="M0 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2 1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1H5a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1 2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1z" />
+                </svg>
+                <span class="description">Modelos</span>
+            </a>
             <a id="navMonitores" class="nav-link" href="./dashboardMonitores.html">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-display"
                     viewBox="0 0 16 16">
@@ -78,7 +88,7 @@
                 <span class="description">Unidades</span>
             </a>
 
-            <a  id="navFuncionarios" class="nav-link" href="./dashboardFuncionarios.html">
+            <a id="navFuncionarios" class="nav-link" href="./dashboardFuncionarios.html">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-person-lines-fill" viewBox="0 0 16 16">
                     <path
@@ -116,7 +126,8 @@
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a onclick="limparSessao()" class="dropdown-item" style="color: #13347b;" style="color: #13347b;">Sair</a></li>
+                    <li><a onclick="limparSessao()" class="dropdown-item" style="color: #13347b;"
+                            style="color: #13347b;">Sair</a></li>
                 </ul>
             </div>
         </nav>
@@ -142,7 +153,8 @@
             </button>
         </form>
 
-        <div class="botaoAdicionarMonitor" id="botaoCadastrarFunc" style="display: none; margin-top: 20px; padding-top: 5px;">
+        <div class="botaoAdicionarMonitor" id="botaoCadastrarFunc"
+            style="display: none; margin-top: 20px; padding-top: 5px;">
             <a style="color: white; text-decoration: none;" href="../cadastroMonitor.html">
                 <i class="fa-solid fa-plus"></i>
                 Adicionar Monitor
@@ -559,10 +571,10 @@
     <script src="https://cdn.datatables.net/2.3.7/js/dataTables.bootstrap5.js"></script>
 
     <script>
-        window.onload = function() {
-    validarSessao();
-    listarUnidades();
-    }; 
+        window.onload = function () {
+            validarSessao();
+            listarUnidades();
+        };
 
         function listarUnidades() {
             var fk_Empresa = sessionStorage.FK_EMPRESA;
