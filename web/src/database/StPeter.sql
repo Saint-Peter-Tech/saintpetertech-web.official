@@ -64,10 +64,19 @@ unidade_medida VARCHAR(50) NOT NULL,
 comando_psutil VARCHAR(100)
 );
 
+CREATE TABLE IF NOT EXISTS modelos(
+	id_modelo INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50),
+    dtLancamento DATE,
+    marca VARCHAR(50),
+    descricao VARCHAR(1000)
+);
+
 CREATE TABLE IF NOT EXISTS monitores
 (id_monitor INT PRIMARY KEY AUTO_INCREMENT,
 fk_unidade INT NOT NULL,
 fk_empresa INT NOT NULL,
+fk_modelo INT NOT NULL,
 dtFabricacao DATE,
 dtManutencao DATE,
 status_monitor VARCHAR(50),
@@ -81,7 +90,11 @@ constraint fk_unidadeMonitor
 	
 constraint fk_empresaMonitor
 	foreign key(fk_empresa)
-		references empresas(id_empresa)
+		references empresas(id_empresa),
+        
+constraint fk_modeloMonitor
+	foreign key (fk_modelo)
+		references modelos(id_modelo)
 );
 
 CREATE TABLE IF NOT EXISTS componente_monitor
@@ -120,44 +133,69 @@ INSERT IGNORE INTO empresas
 VALUES
 ('00000000000002', 
  '11999999999', 
- 'MedCloud Serviços Hospitalares LTDA', 
- 'contato@medcloud.com'),
- ('00000000000003', 
- '11888888888', 
- 'HealthTech Monitoramento Hospitalar LTDA', 
- 'contato@healthtech.com');
+ 'Philips do Brasil Ltda', 
+ 'philips@philips.com');
 
 INSERT IGNORE INTO hospitais 
 (fk_empresa, nome_hospital, cnpj_hospital, telefone_hospital)
 VALUES
 (2, 'Hospital Nova Esperança', '20000000000001', '11444455551'),
-(2, 'Hospital Bem Estar', '20000000000002', '11444455552');
-
-INSERT IGNORE INTO hospitais 
-(fk_empresa, nome_hospital, cnpj_hospital, telefone_hospital)
-VALUES
-(3, 'Hospital Santa Helena', '30000000000001', '11555566661'),
-(3, 'Hospital Central Brasil', '30000000000002', '11555566662');
+(2, 'Hospital Bem Estar', '20000000000002', '11444455552'),
+(2, 'Hospital Santa Helena', '30000000000001', '11555566661'),
+(2, 'Hospital Central Brasil', '30000000000002', '11555566662');
 
 INSERT IGNORE INTO unidades 
 (fk_hospital, cep, rua, numero, cidade, nome_unidade, email_responsavel, telefone_responsavel, rede_total)
 VALUES
-(1, '01001000', 'Rua A', '100', 'São Paulo', 'Unidade SP - Empresa 2', 'resp2@empresa.com', '11911111111', 1000);
+(1, '04293970', 'Rua do Boqueirão', '320', 'São Paulo', 'Unidade SP - Nova Esperança', 'spnovaesperanca@esperanca.com', '11911111111', 1000),
+(2, '05109130', 'Rua Teixeira Soares', '200', 'São Paulo', 'Unidade SP - Bem Estar', 'spbemestar@bemestar.com', '11922222222', 1000),
+(3,  '04075904', 'Avenida Açocê', '530', 'São Paulo', 'Unidade SP - Santa Helena', 'spsantahelena@santahelena.com', '1123235167', 1000),  
+(4, '01007900', 'Rua Doutor Faria Pereira', '56', 'São Paulo', 'Unidade SP - Central Brasil', 'spcentralbrasil@centralbrasil.com', '1132567234', 1000);
 
-INSERT IGNORE INTO unidades 
-(fk_hospital, cep, rua, numero, cidade, nome_unidade, email_responsavel, telefone_responsavel, rede_total)
-VALUES
-(3, '02002000', 'Rua B', '200', 'São Paulo', 'Unidade SP - Empresa 3', 'resp3@empresa.com', '11922222222', 1000);
+INSERT IGNORE INTO usuarios (fk_adm, fk_empresa, nome_usuario, email, senha, cpf) VALUES
+(
+    NULL,
+    1,
+    'Suporte',
+    'suporte@saintpeter.com',
+    'suporte',
+    '57000802812'
+),
+(
+    NULL,
+    2,
+    'Júlia Araripe',
+    'julia@philips.com',
+    'admin',
+    '92665394812'
+),
+(
+	1,
+	2,
+    'Philipi',
+	'philipi@philips.com',
+	'analista',
+	'72776014830'
+);
 
+INSERT INTO modelos (nome, dtLancamento, marca, descricao) VALUES
+	("IntelliVue MX400", "2021-06-07", "Philips", "O IntelliVue MX400 oferece um grande poder de monitoramento em uma unidade altamente compacta e portátil. Capaz de fornecer grande quantidade de informações do paciente em uma rápida olhada, o IntelliVue pode fazer uma diferença real quando diversos pacientes e diferentes prioridades exigem atenção."),
+    ("IntelliVue MX450", "2021-06-09", "Philips", "O IntelliVue MX450 combina poderoso monitoramento com portabilidade flexível em uma unidade compacta. Fornecendo abrangente informação do paciente à primeira vista, pode fazer uma real diferença quando vários pacientes e prioridades exigem atenção."),
+    ("IntelliVue MX500", "2022-06-06", "Philips", "O IntelliVue MX500 combina poderoso monitoramento com portabilidade flexível em uma unidade compacta. Fornecendo abrangente informação do paciente à primeira vista, pode fazer uma real diferença quando vários pacientes e prioridades exigem atenção."),
+    ("IntelliVue MX550", "2022-07-07", "Philips", "O IntelliVue MX550 reúne um monitoramento poderoso ao leito com a garantia de um backup de bateria. Capaz de absorver uma grande quantidade de informações do paciente em um piscar de olhos, ele pode fazer uma enorme diferença quando diversos pacientes e prioridades precisam de atenção."),
+    ("IntelliVue MX750", "2024-12-25", "Philips", "O monitor de pacientes à beira do leito IntelliVue MX750 da Philips aborda diretamente as necessidades de segurança em constante evolução do cenário de TI em saúde e conta com uma série de recursos que facilitam suas estratégias de segurança cibernética.¹ Além disso, esse monitor excepcional oferece uma funcionalidade avançada e uma ampla gama de medições."),
+    ("IntelliVue MX850", "2025-12-24", "Philips", "O monitor de pacientes à beira do leito IntelliVue MX850 da Philips aborda diretamente as necessidades de segurança em constante evolução do cenário de TI em saúde e conta com uma série de recursos que facilitam suas estratégias de segurança cibernética. Além disso, esse excepcional monitor de qualidade premium oferece uma funcionalidade avançada, opções flexíveis de configuração e uma ampla gama de medições. O monitor se adapta facilmente às demandas de ambientes de terapia intensiva para pacientes em estado grave.");
+    
+    
 INSERT IGNORE INTO monitores 
-(fk_unidade, fk_empresa, dtFabricacao, dtManutencao, status_monitor)
+(fk_unidade, fk_empresa, fk_modelo, dtFabricacao, dtManutencao, status_monitor) 
 VALUES
-(1, 2, '2024-01-01', '2025-01-01', 'Inativo'),
-(1, 2, '2024-02-01', '2025-02-01', 'Inativo'),
-(1, 2, '2024-03-01', '2025-03-01', 'Inativo'),
-(2, 3, '2024-01-01', '2025-01-01', 'Inativo'),
-(2, 3, '2024-02-01', '2025-02-01', 'Inativo'),
-(2, 3, '2024-03-01', '2025-03-01', 'Inativo');
+(1, 2, 1, '2024-01-01', '2025-01-01', 'Inativo'),
+(1, 2, 2, '2024-02-01', '2025-02-01', 'Inativo'),
+(1, 2, 3, '2024-03-01', '2025-03-01', 'Inativo'),
+(1, 2, 4, '2024-01-01', '2025-01-01', 'Inativo'),
+(1, 2, 5, '2024-02-01', '2025-02-01', 'Inativo'),
+(1, 2, 6, '2024-03-01', '2025-03-01', 'Inativo');
 
 INSERT IGNORE INTO componente_monitor (fk_componente, fk_monitor, limite)
 VALUES
@@ -167,29 +205,3 @@ VALUES
 (1,4,80),(2,4,75),(3,4,70),(4,4,10),
 (1,5,80),(2,5,75),(3,5,70),(4,5,10),
 (1,6,80),(2,6,75),(3,6,70),(4,6,10);
-
-INSERT IGNORE INTO usuarios (fk_adm, fk_empresa, nome_usuario, email, senha, cpf) VALUES
-(
-    NULL,
-    1,
-    'Suporte',
-    'suporte@saintpeter.com',
-    'SaintPeterTech@2026',
-    '13509417003'
-),
-(
-    NULL,
-    2,
-    'Gestor',
-    'admin@email.com',
-    'admin',
-    '12345678901'
-),
-(
-	1,
-	2,
-    'Analista',
-	'analista@email.com',
-	'admin',
-	'12345678902'
-);
