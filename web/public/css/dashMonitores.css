@@ -42,46 +42,46 @@
   display: none;
 }
 
-.botaoAdicionarMonitor{
-    text-decoration: none;
-    background-color: #4169e1;
-    color: #ddf5f1;
-    border-radius: 10px;
-    width: 200px;
-    height: 32px;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2%;
-    transition: transform 0.3s ease;
+.botaoAdicionarMonitor {
+  text-decoration: none;
+  background-color: #4169e1;
+  color: #ddf5f1;
+  border-radius: 10px;
+  width: 200px;
+  height: 32px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2%;
+  transition: transform 0.3s ease;
 }
 
-.botaoAdicionarMonitor:hover{
-    transform: scale(1.03);
+.botaoAdicionarMonitor:hover,
+.alertasGerados:hover,
+.kpiMonitor:hover {
+  transform: scale(1.03);
 }
 
-.page-item.active{
-    border: none!important;
-    border-radius: 10px;
-    transition: ease 0.3s;
-    outline: none !important;
-    box-shadow: none !important;
+.page-item.active {
+  border: none !important;
+  border-radius: 10px;
+  transition: ease 0.3s;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
-.page-item.active:hover{
-    border: none!important;
-    background-color: transparent!important;
-    outline: none !important;
-    box-shadow: none !important;
-
+.page-item.active:hover {
+  border: none !important;
+  background-color: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
-.dt-paging-button{
-    border: none!important;
+.dt-paging-button {
+  border: none !important;
 }
-.dt-paging-button:hover{
-    background: none!important;
-
+.dt-paging-button:hover {
+  background: none !important;
 }
 
 @media (max-width: 480px) {
@@ -127,7 +127,7 @@
     font-weight: 500;
   }
 
-  .container{
+  .container {
     width: 100px;
     height: 20px;
   }
@@ -135,21 +135,106 @@
 
 /* Dash de monitor específico */
 
-.statusMonitorAtivo{
+.statusMonitorAtivo {
   color: #006300;
-  background-color: #B4FABB;
+  background-color: #b4fabb;
   border-radius: 10px;
   padding: 2%;
   font-size: 14px;
   transition: transform 0.3s ease;
 }
 
-.statusMonitorInativo{
+.statusMonitorInativo {
   color: #991616;
-  background-color: #F5DDDD;
+  background-color: #f5dddd;
   border-radius: 10px;
   padding: 2%;
   font-size: 14px;
   transition: transform 0.3s ease;
 }
 
+/* monitor específico */
+
+.displayFlex {
+  display: flex;
+  gap: 2%;
+}
+
+.alertasGerados {
+  display: flex;
+  width: 500px;
+  flex-direction: column;
+  text-align: end;
+  color: #991616;
+  transition: ease 0.3s transform;
+  cursor: pointer;
+  padding: 2%;
+  line-height: 0.1;
+}
+
+.linha-vertical {
+  border-right: #f5f5f5 solid 2px;
+}
+
+.botaoConfig {
+  border: none;
+  background-color: white;
+  color: #13347b;
+  transition: transform 0.3s ease;
+}
+
+.botaoConfig:hover {
+  transform: scale(1.03);
+  color: #4169e1;
+}
+
+.width100 {
+  width: 700px;
+  gap: 2%;
+}
+
+.modulosAtivos {
+  width: 53% !important;
+  margin-left: 21.5%;
+  padding: 1% !important;
+}
+
+.atualizarCadastroComponentes {
+  background-color: white;
+  display: flex;
+  justify-content: end;
+}
+
+.kpiMonitor {
+  background-color: white;
+  height: 332px;
+  padding: 5%;
+  width: 599px;
+  border-radius: 10px;
+  color: #13347b;
+  transition: transform 0.3s ease;
+  border-bottom: #13347b 4px solid ;
+}
+
+/* status */
+
+.selectPrincipal{
+  background-color: transparent;
+  border: #13347b 2px solid;
+  border-radius: 10px;
+  font-size: 18px;
+  padding: 0.3%;
+  font-weight: bold;
+  width: 300px;
+  cursor: pointer;
+  color: #13347b;
+  margin-bottom: 1%;
+}
+
+.selectComp{
+  background-color: #f5f5f5;
+  color: #13347b;
+  font-size: 16px;
+  border: none;
+  transition: transform 0.3s ease;
+}
