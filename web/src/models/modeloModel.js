@@ -17,7 +17,16 @@ function buscarModelos() {
     return database.executar(instrucaoSql);
 }
 
+function buscarModelosPorNome() {
+    var instrucaoSql = `
+        SELECT nome FROM modelos;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     cadastrarModelo,
     buscarModelos,
+    buscarModelosPorNome
 }

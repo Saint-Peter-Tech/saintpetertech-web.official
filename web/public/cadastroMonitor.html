@@ -128,10 +128,18 @@
                     </select>
                 </p>
 
-                <div id="container_unidade" style="display: none;" onchange="listarComponentes()">
+                <div id="container_unidade" style="display: none;" onchange="listarModelosDisponiveis()">
                     <p><span>Selecione a Unidade:</span> <br>
                         <select class="selectCadastro" id="select_unidade">
                             <option value="0" selected disabled>Selecione uma unidade</option>
+                        </select>
+                    </p>
+                </div>
+
+                <div id="container_modelo" style="display: none;" onchange="listarComponentes()">
+                    <p><span>Selecione o Modelo do Monitor:</span> <br>
+                        <select class="selectCadastro" id="select_modelo">
+                            <option value="0" selected disabled>Selecione um modelo</option>
                         </select>
                     </p>
                 </div>
@@ -253,6 +261,7 @@
 
         if (idHospital == "0") {
             container.style.display = "none";
+            document.getElementById("container_modelo").style.display = "none"; 
             return;
         }
 
@@ -272,21 +281,61 @@
                     selectUnidade.appendChild(option);
                 });
                 container.style.display = "block";
+                document.getElementById("container_modelo").style.display = "none";
                 container_componentes.style.display = "none";
-                container_componentes2.style.display = "none"
+                container_componentes2.style.display = "none";
             })
             .catch(function (erro) {
                 console.error("Erro ao buscar unidades:", erro);
             });
     }
 
+    function listarModelosDisponiveis() {
+        var idUnidade = select_unidade.value;
+        var containerModelo = document.getElementById("container_modelo");
+        var selectModelo = document.getElementById("select_modelo");
+
+        if (idUnidade == "0") {
+            containerModelo.style.display = "none";
+            return;
+        }
+
+        fetch('/modelo/listarModelosPorNome')
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    return resposta.json();
+                } else {
+                    throw new Error("Erro ao buscar modelos.");
+                }
+            })
+            .then(function (modelos) {
+                selectModelo.innerHTML = '<option value="0" selected disabled>Selecione um modelo</option>';
+
+                modelos.forEach(modelo => {
+                    const option = document.createElement("option");
+                    option.value = modelo.id_modelo;
+                    option.textContent = modelo.nome;
+                    selectModelo.appendChild(option);
+                });
+
+                containerModelo.style.display = "block";
+                container_componentes.style.display = "none";
+                container_componentes2.style.display = "none";
+            })
+            .catch(function (erro) {
+                console.error("Erro ao preencher select de modelos:", erro);
+            });
+    }
+
     function listarComponentes() {
-        if (select_unidade.value != 0) {
-            container_componentes.style.display = "block"
-            container_componentes2.style.display = "block"
+        var selectModelo = document.getElementById("select_modelo");
+
+        if (select_unidade.value != 0 && selectModelo.value != 0) {
+            container_componentes.style.display = "block";
+            container_componentes2.style.display = "block";
         } else {
-            container_componentes.style.display = "none"
-            container_componentes2.style.display = "none"
+            container_componentes.style.display = "none";
+            container_componentes2.style.display = "none";
         }
     }
 
@@ -305,15 +354,9 @@
         }
 
         if (check_disco.checked) {
-            div_limite_disco.style.display = "block"
+            div_limite_disco.style.display = "block";
         } else {
-            div_limite_disco.style.display = "none"
-        }
-
-        if (check_rede.checked) {
-            div_limite_rede.style.display = "block"
-        } else {
-            div_limite_rede.style.display = "none"
+            div_limite_disco.style.display = "none";
         }
     }
 
@@ -329,6 +372,8 @@
         var limiteRede = input_limite_rede.value;
         var dtFabricacao = date_fabricacao.value;
         var dtManutencao = date_manutencao.value;
+        var idModelo = select_modelo.value;
+        var quantidade = Number(input_qtde_monitores.value);
         div_erroCadastro.innerHTML = "";
 
 
@@ -365,19 +410,25 @@
             }
         }
 
-        if (check_rede.checked) {
-            if (limiteRede <= 0 || limiteRede == null) {
-                mensagemErro += "O limite da <b>rede</b> não pode estar vazio, ou menor que 0Mbps.<br>";
-            }
-            listaComponentes.push({
-                id: 4,
-                limite: document.getElementById("input_limite_rede").value
-            });
+        if (limiteRede <= 0 || limiteRede == null) {
+            mensagemErro += "O limite da <b>rede</b> não pode estar vazio, ou menor que 0Mbps.<br>";
         }
+        listaComponentes.push({
+            id: 4,
+            limite: document.getElementById("input_limite_rede").value
+        });
 
 
         if (listaComponentes.length == 0) {
             mensagemErro += "Selecione ao menos um componente para monitorar.<br>";
+        }
+
+        if (idModelo == "0" || idModelo == null || idModelo == undefined) {
+            mensagemErro += "Selecione um <b>Modelo de Monitor</b> válido.<br>";
+        }
+
+        if(quantidade == 0 || quantidade == null){
+            mensagemErro += "Selecione uma <b>quantidade de monitores</b> válida.<br>";
         }
 
         if (mensagemErro != "") {
@@ -385,8 +436,6 @@
             div_erroCadastro.innerHTML = mensagemErro;
             return;
         }
-
-        var quantidade = Number(input_qtde_monitores.value);
 
         var monitores = [];
 
@@ -403,7 +452,8 @@
                     statusServer: statusMonitor,
                     componentesServer: listaComponentes,
                     dtFabricacaoServer: dtFabricacao,
-                    dtManutencaoServer: dtManutencao
+                    dtManutencaoServer: dtManutencao,
+                    modeloServer: idModelo
                 })
             }).then(function (resposta) {
                 if (resposta.ok) {

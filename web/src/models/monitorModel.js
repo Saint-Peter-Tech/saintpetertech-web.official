@@ -1,9 +1,9 @@
 var database = require("../database/config");
 
-function cadastrarMonitor(fkUnidade, fkEmpresa, status_monitor, dtFabricacao, dtManutencao) {
+function cadastrarMonitor(fkUnidade, fkEmpresa, fkModelo, status_monitor, dtFabricacao, dtManutencao) {
     var instrucaoSql = `
-        INSERT INTO monitores (fk_unidade, fk_empresa, dtFabricacao, dtManutencao, status_monitor) 
-        VALUES (${fkUnidade}, ${fkEmpresa}, '${dtFabricacao}', '${dtManutencao}', '${status_monitor}');
+        INSERT INTO monitores (fk_unidade, fk_empresa, fk_modelo, dtFabricacao, dtManutencao, status_monitor) 
+        VALUES (${fkUnidade}, ${fkEmpresa}, ${fkModelo}, '${dtFabricacao}', '${dtManutencao}', '${status_monitor}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

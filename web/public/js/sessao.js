@@ -18,35 +18,38 @@ function validarSessao() {
         window.location = "../login.html";
     }
 
-   var botaoCadastrar = document.getElementById("botaoCadastrarFunc");
-
+    var botaoCadastrar = document.getElementById("botaoCadastrarFunc");
     if (botaoCadastrar != null && adm == "null") {
-    botaoCadastrar.style.display = "block";
+        botaoCadastrar.style.display = "block";
     }
 
     var botaoAddMon = document.getElementById("botaoAddMon");
-    
-    if(botaoAddMon != null && adm == "null") {
+    if (botaoAddMon != null && adm == "null") {
         botaoAddMon.style.display = "block";
     }
 
     var adicionarFuncionarioButton = document.getElementById("adicionarFuncionarioButton");
-
-    if(adicionarFuncionarioButton != null && adm == "null") {
+    if (adicionarFuncionarioButton != null && adm == "null") {
         adicionarFuncionarioButton.style.display = "block";
     }
 
     const botaoNavFuncionarios = document.getElementById("navFuncionarios");
     const botaoNavDashInicial = document.getElementById("navDashInicial");
 
-    if(adm != "null"){
-        botaoNavFuncionarios.style.display = "none"
-        botaoNavDashInicial.href = "./dashboardAnalista.html"
-        
-    } else if (adm == "null") {
-        botaoNavDashInicial.href = "./dashboardGerente.html"
-    } else {
-        botaoNavDashInicial.href = "./dashboardSuporteEmpresa.html"
+    if (botaoNavFuncionarios != null) {
+        if (adm != "null") {
+            botaoNavFuncionarios.style.display = "none";
+        }
+    }
+
+    if (botaoNavDashInicial != null) {
+        if (adm != "null") {
+            botaoNavDashInicial.href = "./dashboardAnalista.html";
+        } else if (adm == "null") {
+            botaoNavDashInicial.href = "./dashboardGerente.html";
+        } else {
+            botaoNavDashInicial.href = "./dashboardSuporteEmpresa.html";
+        }
     }
 }
 
@@ -58,17 +61,20 @@ function limparSessao() {
 // carregamento (loading)
 function aguardar() {
     var divAguardar = document.getElementById("div_aguardar");
-    divAguardar.style.display = "flex";
+    if (divAguardar != null) {
+        divAguardar.style.display = "flex";
+    }
 }
 
 function finalizarAguardar(texto) {
     var divAguardar = document.getElementById("div_aguardar");
-    divAguardar.style.display = "none";
+    if (divAguardar != null) {
+        divAguardar.style.display = "none";
+    }
 
     var divErrosLogin = document.getElementById("div_erros_login");
-    if (texto) {
+    if (divErrosLogin != null && texto) {
         divErrosLogin.style.display = "flex";
         divErrosLogin.innerHTML = texto;
     }
 }
-

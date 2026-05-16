@@ -12,4 +12,8 @@ router.get("/listarModelos", function (req, res) {
     modeloController.buscarModelos(req, res);
 })
 
+router.get("/listarModelosPorNome", function (req, res) {
+    modeloController.buscarModelosPorNome(req, res);
+})
+
 module.exports = router;

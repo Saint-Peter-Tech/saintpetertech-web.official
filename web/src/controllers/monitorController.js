@@ -7,8 +7,9 @@ function cadastrarMonitor(req, res) {
     var statusMonitor = req.body.statusServer;
     var dtFabricacao = req.body.dtFabricacaoServer;
     var dtManutencao = req.body.dtManutencaoServer;
+    var fkModelo = req.body.modeloServer;
 
-    monitorModel.cadastrarMonitor(fkUnidade, fkEmpresa, statusMonitor, dtFabricacao, dtManutencao)
+    monitorModel.cadastrarMonitor(fkUnidade, fkEmpresa, fkModelo, statusMonitor, dtFabricacao, dtManutencao)
         .then(function (resultado) {
             var idMonitorCriado = resultado.insertId;
             for (var i = 0; i < componentes.length; i++) {
