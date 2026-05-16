@@ -1,13 +1,13 @@
 var database = require("../database/config");
 
-// function cadastrarUnidade(fkHospital, cep, rua, numero, cidade, nome_unidade, email_responsavel, telefone_responsavel, rede_total) {
-//     var instrucaoSql = `
-//         INSERT INTO unidades (fk_hospital, cep, rua, numero, cidade, nome_unidade, email_responsavel, telefone_responsavel, rede_total) 
-//         VALUES (${fkHospital}, '${cep}', '${rua}', '${numero}', '${cidade}', '${nome_unidade}', '${email_responsavel}', '${telefone_responsavel}', '${rede_total}');
-//     `;
-//     console.log("Executando a instrução SQL: \n" + instrucaoSql);
-//     return database.executar(instrucaoSql);
-// }
+function cadastrarModelo(nomeModelo, dataLancamento, marca, descricao) {
+    var instrucaoSql = `
+        INSERT INTO modelos (nome, dtLancamento, marca, descricao) 
+        VALUES ('${nomeModelo}', '${dataLancamento}', '${marca}', '${descricao}');
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 
 function buscarModelos() {
     var instrucaoSql = `
@@ -18,6 +18,6 @@ function buscarModelos() {
 }
 
 module.exports = {
-    // cadastrarUnidade,
+    cadastrarModelo,
     buscarModelos,
 }
