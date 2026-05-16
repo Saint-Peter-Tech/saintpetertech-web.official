@@ -32,7 +32,20 @@ function buscarModelos(req, res) {
     });
 }
 
+function buscarModelosPorNome(req, res) {
+  modeloModel.buscarModelos()
+    .then(function (resultado) {
+      res.json(resultado);
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      res.status(500).json(erro.sqlMessage);
+    });
+}
+
+
 module.exports = {
     cadastrarModelo,
     buscarModelos,
+    buscarModelosPorNome
 };
