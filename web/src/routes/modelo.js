@@ -5,7 +5,7 @@ var modeloController = require("../controllers/modeloController");
 
 
 router.post("/cadastrar", function (req, res) {
-    unidadeController.cadastrarUnidade(req, res);
+    modeloController.cadastrarModelo(req, res);
 })
 
 router.get("/listarModelos", function (req, res) {
