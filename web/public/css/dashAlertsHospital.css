@@ -1,0 +1,126 @@
+.lista-critica-scroll {
+    max-height: 250px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.lista-critica-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.lista-critica-scroll::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 10px;
+}
+
+.lista-critica-scroll::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+.lista-critica-scroll::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Estilização Geral da Main Content */
+.main-dashboard-container {
+    padding: 30px;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+.topo-dashboard-icone {
+    background-color: #ffffff;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.05);
+    color: #0d6efd;
+}
+
+.titulo-hospital {
+    font-weight: bold;
+    color: #13347b;
+    margin: 0;
+    font-family: 'Exo 2', sans-serif;
+}
+
+.subtitulo-hospital {
+    color: #6c757d;
+    margin: 5px 0 0 0;
+    font-size: 14px;
+}
+
+.card-filtro-componente {
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.03);
+    background-color: #fff;
+    border: 1px solid #edf2f7;
+}
+
+.titulo-filtro {
+    font-size: 14px;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 12px;
+}
+
+.select-customizado-dash {
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 15px;
+    border-color: #cbd5e1;
+    color: #334155;
+    font-weight: 500;
+}
+
+.card-kpi-dashboard {
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.03);
+    background-color: #fff;
+    border: 1px solid #edf2f7;
+}
+
+.card-kpi-dashboard .kpi-label {
+    font-size: 13px;
+    color: #718096;
+    font-weight: 500;
+    margin: 0;
+}
+
+.card-kpi-dashboard .kpi-valor {
+    font-size: 38px;
+    font-weight: 800;
+    color: #1a202c;
+    margin: 8px 0 12px 0;
+}
+
+.card-kpi-dashboard .kpi-valor-medio {
+    font-size: 26px;
+    font-weight: 800;
+    color: #1a202c;
+    margin: 18px 0 18px 0;
+}
+
+.item-lista-critica {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    background-color: #f8fafc;
+    border: 1px solid #f1f5f9;
+    border-radius: 10px;
+}
+
+.indicador-bola-critica {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.header-manutencao-critica {
+    border-bottom: 1px solid #edf2f7;
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+}
