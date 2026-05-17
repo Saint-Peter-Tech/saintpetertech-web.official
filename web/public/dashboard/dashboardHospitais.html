@@ -225,26 +225,28 @@
 
             card.onclick = function () {
                 sessionStorage.ID_HOSPITAL = hospital.id_hospital;
-                console.log("Hospital selecionado no clique:", sessionStorage.ID_HOSPITAL);
+                console.log("Hospital salvo na sessão:", sessionStorage.ID_HOSPITAL);
+
+                window.location.href = "./dashboardAlertasHospital.html";
             };
 
             card.innerHTML = `
-                <div class="cardFormulario" style="width: 320px; padding: 25px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0px 4px 10px rgba(0,0,0,0.05); background-color: #fff;">
-                    <div style="display: flex; align-items: center; gap: 15px;">
-                        <div style="background-color: #eef2fa; padding: 12px; border-radius: 8px; color: #13347b;">
-                            <i class="fa-solid fa-hospital fa-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 style="font-size: 18px; font-weight: bold; margin: 0; color: #13347b;">
-                                ${hospital.nome_hospital}
-                            </h3>
-                            <p style="font-size: 12px; color: gray; margin: 5px 0 0 0;">
-                                ID: #00${hospital.id_hospital}
-                            </p>
-                        </div>
+            <div class="cardFormulario" style="width: 320px; padding: 25px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0px 4px 10px rgba(0,0,0,0.05); background-color: #fff;">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <div style="background-color: #eef2fa; padding: 12px; border-radius: 8px; color: #13347b;">
+                        <i class="fa-solid fa-hospital fa-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 18px; font-weight: bold; margin: 0; color: #13347b;">
+                            ${hospital.nome_hospital}
+                        </h3>
+                        <p style="font-size: 12px; color: gray; margin: 5px 0 0 0;">
+                            ID: #00${hospital.id_hospital}
+                        </p>
                     </div>
                 </div>
-            `;
+            </div>
+        `;
             container.appendChild(card);
         });
     }
@@ -262,3 +264,14 @@
         plotarCards(hospitaisFiltrados);
     }
 </script>
+
+<style>
+        .cardHospital {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cardHospital:hover {
+            transform: scale(1.03); 
+            box-shadow: 0px 8px 20px rgba(19, 52, 123, 0.15); 
+        }
+    </style>
