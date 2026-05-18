@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Funcionários | SPT</title>
+    <title>Hospitais | SPT</title>
     <link rel="icon" href="../assets/LogoClara.png" />
 
     <!-- Bootstrap -->
@@ -26,16 +26,9 @@
 
     <!-- link css tabela do bootstrap -->
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.7/css/dataTables.bootstrap5.css">
-
-    <!-- link do dataTable -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.7/css/dataTables.dataTables.css">
-
 </head>
 
 <body>
-    <h4 class="tituloDash" style="margin-left: 270px;">
-        Seus funcionários
-    </h4>
     <div class="sidebar">
         <nav class="nav flex-column">
             <a href="../index.html"
@@ -50,7 +43,7 @@
                 <img width="100%" src="../assets/Identidade Visual/LogoEscura.png" id="logo_navbar2" alt="">
             </a>
 
-            <a class="nav-link" id="navDashInicial" href="./dashboardGerente.html">
+            <a id="navDashInicial" class="nav-link">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid"
                     viewBox="0 0 16 16">
                     <path
@@ -68,14 +61,6 @@
                 </svg>
                 <span class="description">Modelos</span>
             </a>
-            <a class="nav-link" href="./dashboardMonitores.html">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-display"
-                    viewBox="0 0 16 16">
-                    <path
-                        d="M0 4s0-2 2-2h12s2 0 2 2v6s0 2-2 2h-4q0 1 .25 1.5H11a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1h.75Q6 13 6 12H2s-2 0-2-2zm1.398-.855a.76.76 0 0 0-.254.302A1.5 1.5 0 0 0 1 4.01V10c0 .325.078.502.145.602q.105.156.302.254a1.5 1.5 0 0 0 .538.143L2.01 11H14c.325 0 .502-.078.602-.145a.76.76 0 0 0 .254-.302 1.5 1.5 0 0 0 .143-.538L15 9.99V4c0-.325-.078-.502-.145-.602a.76.76 0 0 0-.302-.254A1.5 1.5 0 0 0 13.99 3H2c-.325 0-.502.078-.602.145" />
-                </svg>
-                <span class="description">Monitores</span>
-            </a>
 
             <a class="nav-link" href="./dashboardHospitais.html">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -87,7 +72,16 @@
                 <span class="description">Hospitais</span>
             </a>
 
-            <a class="nav-link" href="./dashboardUnidades.html">
+            <a class="nav-link" href="./dashboardMonitores.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-display"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M0 4s0-2 2-2h12s2 0 2 2v6s0 2-2 2h-4q0 1 .25 1.5H11a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1h.75Q6 13 6 12H2s-2 0-2-2zm1.398-.855a.76.76 0 0 0-.254.302A1.5 1.5 0 0 0 1 4.01V10c0 .325.078.502.145.602q.105.156.302.254a1.5 1.5 0 0 0 .538.143L2.01 11H14c.325 0 .502-.078.602-.145a.76.76 0 0 0 .254-.302 1.5 1.5 0 0 0 .143-.538L15 9.99V4c0-.325-.078-.502-.145-.602a.76.76 0 0 0-.302-.254A1.5 1.5 0 0 0 13.99 3H2c-.325 0-.502.078-.602.145" />
+                </svg>
+                <span class="description">Monitores</span>
+            </a>
+
+            <a id="navUnidades" class="nav-link" href="./dashboardUnidades.html">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-hospital" viewBox="0 0 16 16">
                     <path
@@ -98,7 +92,7 @@
                 <span class="description">Unidades</span>
             </a>
 
-            <a class="nav-link" id="navFuncionarios" href="./dashboardFuncionarios.html">
+            <a id="navFuncionarios" class="nav-link" href="./dashboardFuncionarios.html">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-person-lines-fill" viewBox="0 0 16 16">
                     <path
@@ -136,87 +130,148 @@
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" style="color: #13347b;" style="color: #13347b;">Sair</a></li>
+                    <li><a onclick="limparSessao()" class="dropdown-item" style="color: #13347b;"
+                            style="color: #13347b;">Sair</a></li>
                 </ul>
             </div>
         </nav>
     </div>
 
-    <div class="container-fluid" style="width: 60%; margin-left: 260px;">
+    <main class="main-content">
+        <div class="container-fluid" style="width: 60%; margin-left: -3px;">
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" id="input_busca" placeholder="Buscar hospital..."
+                    aria-label="Search" />
 
-        <div class="botaoAdicionarMonitor" style="width: 210px!important; display: none;"
-            id="adicionarFuncionarioButton">
-            <a style="color: white; text-decoration: none;" href="../cadastroFuncionario.html">
-                <i class="fa-solid fa-plus"></i>
-                Adicionar funcionário
-            </a>
+                <select class="opcaoMonitores" name="" id="select_hospital">
+                    <option value="0" disabled selected>Todos os Hospitais</option>
+                </select>
+
+                <button class="botaoPesquisar" type="button" onclick="filtrarPorSelect()">PESQUISAR</button>
+            </form>
+            <br>
         </div>
-    </div>
 
-    <div class="container pt-5 w-30">
-        <table id="example" class="table table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Email</th>
-                    <th>Telefone</th>
-                </tr>
-            </thead>
+        <div style="display: flex; flex-wrap: wrap; gap: 2%;" id="containerCardHospital">
+        </div>
+    </main>
 
-            <tbody id="corpoTabela">
-
-            </tbody>
-        </table>
-
-    </div>
-    <!-- links javascript boostrap tabela -->
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="../js/sessao.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.datatables.net/2.3.7/js/dataTables.js"></script>
-    <script src="https://cdn.datatables.net/2.3.7/js/dataTables.bootstrap5.js"></script>
 
-    <script>
-        window.onload = function () {
-            validarSessao();
-            listarFuncionarios();
-        };
+</body>
 
-        function listarFuncionarios() {
+</html>
+<script>
+    var listaHospitais = [];
 
-            var fk_empresa = sessionStorage.FK_EMPRESA;
-            var corpoTabela = document.getElementById("corpoTabela");
+    window.onload = function () {
+        validarSessao();
+        buscarDadosHospitais();
+    };
 
-            fetch('/usuarios/listarFuncionarios?fk_empresa=' + fk_empresa)
-                .then(function (resposta) {
-                    return resposta.json();
-                })
-                .then(function (funcionarios) {
+    function buscarDadosHospitais() {
+        var idEmpresa = sessionStorage.FK_EMPRESA;
 
-                    for (var i = 0; i < funcionarios.length; i++) {
+        if (!idEmpresa) {
+            console.error("FK_EMPRESA não encontrada no sessionStorage.");
+            return;
+        }
 
-                        corpoTabela.innerHTML += `
-                            <tr>
-                                <td>${funcionarios[i].id_usuario}</td>
-                                <td>${funcionarios[i].nome_usuario}</td>
-                                <td>${funcionarios[i].email}</td>
-                                <td>${funcionarios[i].cpf}</td>
-                            </tr>
-                        `;
-                    }
+        fetch(`/hospital/buscarHospitais?idEmpresa=${idEmpresa}`)
+            .then(function (resposta) {
+                if (!resposta.ok) {
+                    throw new Error("Erro na requisição de hospitais");
+                }
+                return resposta.json();
+            })
+            .then(function (hospitais) {
+                listaHospitais = hospitais;
 
-                    $('#example').DataTable({
-                        language: {
-                            url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/pt-BR.json'
-                        },
-                        pagingType: "simple"
-                    });
+                const select = document.getElementById("select_hospital");
 
-                })
-                .catch(function (erro) {
-                    console.log(erro);
+                select.innerHTML = '<option value="0">Todos os Hospitais</option>';
+
+                hospitais.forEach(hospital => {
+                    const option = document.createElement("option");
+                    option.value = hospital.id_hospital;
+                    option.textContent = hospital.nome_hospital;
+                    select.appendChild(option);
                 });
 
+                select.addEventListener("change", function () {
+                    filtrarPorSelect();
+                });
+
+                plotarCards(listaHospitais);
+            })
+            .catch(function (erro) {
+                console.error("Erro ao buscar hospitais:", erro);
+            });
+    }
+
+    function plotarCards(dados) {
+        var container = containerCardHospital;
+        container.innerHTML = "";
+
+        if (dados.length === 0) {
+            container.innerHTML = `<p style="color: #13347b; font-weight: bold; margin-left: 15px;">Nenhum hospital encontrado.</p>`;
+            return;
         }
-    </script>
+
+        dados.forEach(hospital => {
+            const card = document.createElement("div");
+            card.className = "cardHospital";
+            card.style.cursor = "pointer";
+
+            card.onclick = function () {
+                sessionStorage.ID_HOSPITAL = hospital.id_hospital;
+                console.log("Hospital salvo na sessão:", sessionStorage.ID_HOSPITAL);
+
+                window.location.href = "./dashboardAlertasHospital.html";
+            };
+
+            card.innerHTML = `
+            <div class="cardFormulario" style="width: 320px; padding: 25px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0px 4px 10px rgba(0,0,0,0.05); background-color: #fff;">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <div style="background-color: #eef2fa; padding: 12px; border-radius: 8px; color: #13347b;">
+                        <i class="fa-solid fa-hospital fa-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 18px; font-weight: bold; margin: 0; color: #13347b;">
+                            ${hospital.nome_hospital}
+                        </h3>
+                        <p style="font-size: 12px; color: gray; margin: 5px 0 0 0;">
+                            ID: #00${hospital.id_hospital}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        `;
+            container.appendChild(card);
+        });
+    }
+
+    function filtrarPorSelect() {
+        const idHospital = select_hospital.value;
+        const hospitalPesquisado = input_busca.value.toLowerCase().trim();
+
+        const hospitaisFiltrados = listaHospitais.filter(hospital => {
+            const hospitalEncontrado = (idHospital === "0" || hospital.id_hospital == idHospital);
+
+            const nomeHospital = hospital.nome_hospital.toLowerCase().includes(hospitalPesquisado);
+            return hospitalEncontrado && nomeHospital;
+        });
+        plotarCards(hospitaisFiltrados);
+    }
+</script>
+
+<style>
+        .cardHospital {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cardHospital:hover {
+            transform: scale(1.03); 
+            box-shadow: 0px 8px 20px rgba(19, 52, 123, 0.15); 
+        }
+    </style>
