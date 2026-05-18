@@ -125,7 +125,8 @@ INSERT IGNORE INTO empresas VALUES
 INSERT IGNORE INTO componentes (nome_componente, tipo, unidade_medida, comando_psutil) VALUES
 ('CPU', 'Hardware', '%', 'cpu_percent(interval=1)'),
 ('RAM', 'Hardware', '%', 'virtual_memory().percent'),
-('Disco', 'Hardware', '%', "disk_usage('/')"),
+('Disco_Usado', 'Hardware', '%', "disk_usage('/').used"),
+('Disco_Total', 'Hardware', '%', 'disk_usage("/").total'),
 ('Rede', 'Rede', 'Megabit', NULL);
 
 INSERT IGNORE INTO empresas 
@@ -205,3 +206,5 @@ VALUES
 (1,4,80),(2,4,75),(3,4,70),(4,4,10),
 (1,5,80),(2,5,75),(3,5,70),(4,5,10),
 (1,6,80),(2,6,75),(3,6,70),(4,6,10);
+
+select * from usuarios;
