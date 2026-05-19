@@ -17,9 +17,9 @@ function cadastrarHospital(nomeHospital, cnpjHospital, telefoneHospital, fkEmpre
     return database.executar(instrucaoSql);
 }
 
-function buscarInfoUnidade(idHospital){
-    var instrucaoSql = 
-    `
+function buscarInfoUnidade(idHospital) {
+    var instrucaoSql =
+        `
     select  
         u.id_unidade,
         u.nome_unidade, 
@@ -35,8 +35,18 @@ function buscarInfoUnidade(idHospital){
     return database.executar(instrucaoSql);
 }
 
+function buscarHospitalPorId(idHospital) {
+    var instrucaoSql =
+        `SELECT id_hospital, nome_hospital 
+        FROM hospitais 
+        WHERE id_hospital = ${idHospital}`;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     buscarHospitais,
     cadastrarHospital,
-    buscarInfoUnidade
+    buscarInfoUnidade,
+    buscarHospitalPorId
 };

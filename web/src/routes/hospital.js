@@ -15,4 +15,8 @@ router.get("/buscarInfoUnidade", function (req, res){
     hospitalController.buscarInfoUnidade(req, res);
 })
 
+router.get("/buscarPorId", function (req, res) {
+    hospitalController.buscarHospitalPorId(req, res);
+})
+
 module.exports = router;
