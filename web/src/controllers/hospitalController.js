@@ -35,21 +35,35 @@ function cadastrarHospital(req, res) {
     });
 }
 
-function buscarInfoUnidade(req, res){
+function buscarInfoUnidade(req, res) {
   var idHospital = req.query.idHospital;
 
   hospitalModel.buscarInfoUnidade(idHospital)
-    .then(function(resultado){
+    .then(function (resultado) {
       res.json(resultado);
     })
-    .catch(function (erro){
+    .catch(function (erro) {
       console.log(erro);
       res.status(500).json(erro.sqlMessage);
     })
 }
 
+function buscarHospitalPorId(req, res) {
+  var idHospital = req.query.idHospital;
+
+  hospitalModel.buscarHospitalPorId(idHospital)
+    .then(function (resultado) {
+      res.json(resultado[0]);
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      res.status(500).json(erro.sqlMessage);
+    });
+}
+
 module.exports = {
   buscarHospitais,
   cadastrarHospital,
-  buscarInfoUnidade
+  buscarInfoUnidade,
+  buscarHospitalPorId
 };
