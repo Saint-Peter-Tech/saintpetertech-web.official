@@ -1,0 +1,13 @@
+hr.rounded {
+  border-top: 8px solid #13347b;
+  border-radius: 5px;
+}
+
+hr.solid {
+  border-top: 2px solid #13347b;
+}
+
+.boxesModular {
+  display: flex;
+  justify-content: space-between;
+}
