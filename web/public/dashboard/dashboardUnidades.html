@@ -582,6 +582,7 @@
     window.onload = function () {
         validarSessao();
         listarHospitais();
+        listarInfoUnidade();
     };
 
     function listarHospitais() {
@@ -628,7 +629,7 @@
                 return resposta.json();
             })
             .then(function (hospitais) {
-
+                
                 const containerHospital = document.getElementById("containerCardHospital");
 
                 containerHospital.innerHTML = "";
@@ -683,8 +684,9 @@
                             </div>
                         </div>
                         `
-                });
 
+                        sessionStorage.setItem("ID_UNIDADE", hospital.id_unidade)
+                });
             })
             .catch(function (erro) {
                 console.error("Erro ao buscar informações para o card de unidades: ", erro);

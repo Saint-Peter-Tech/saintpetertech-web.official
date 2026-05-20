@@ -185,9 +185,22 @@
   transition: transform 0.3s ease;
 }
 
-.botaoConfig:hover {
+.botaoConfig2 {
+  border: none;
+  background-color: white;
+  color: #13347b;
+  transition: transform 0.3s ease;
+  height: 40px;
+  margin-left: 0.5%;
+  border: #13347b 2px solid;
+  border-radius: 10px;
+}
+
+.botaoConfig:hover,
+.botaoConfig2:hover {
   transform: scale(1.03);
   color: #4169e1;
+  border: #4169e1 2px solid;
 }
 
 .width100 {
@@ -209,9 +222,9 @@
 
 .kpiMonitor {
   background-color: white;
-  height: 494px;
+  height: 240px;
   padding: 5%;
-  width: 520px;
+  width: 490px;
   border-radius: 10px;
   color: #13347b;
   transition: transform 0.3s ease;
@@ -261,13 +274,14 @@
   color: #991616;
   border-bottom: 4px solid #991616;
   background-color: white;
-  padding: 1%;
+  padding: 2%;
   border-radius: 10px;
-  height: 230px;
+  width: 350px;
+  height: 240px;
   transition: transform ease 0.3s;
 }
 
-.kpiMonitorComponente{
+.kpiMonitorComponente {
   color: #13347b;
   background-color: white;
   border-radius: 10px;

@@ -8,5 +8,12 @@ router.post("/cadastrarMonitor", function (req, res) {
     monitorController.cadastrarMonitor(req, res);
 })
 
+router.get("/listarNomesMonitores", function(req, res){
+    monitorController.listarNomesMonitores(req, res)
+})
 
+
+router.get("/listarParametros", function(req, res){
+    monitorController.listarParametros(req,res)
+})
 module.exports = router; 
