@@ -367,11 +367,7 @@
         modelo = selectModelo.value;
     }
 
-    const modulos = ['BPM', 'PA', 'SPO2', 'RESP', 'TEMP', 'PIC', 'PVC', 'ECG', 'ETCO2'];
-
-/* =========================
-   GRÁFICO DE BARRAS
-========================= */
+const modulos = ['BPM', 'PA', 'SPO2', 'RESP', 'TEMP', 'PIC', 'PVC', 'ECG', 'ETCO2'];
 
 const impactCtx = document.getElementById('impactChart');
 
@@ -402,11 +398,6 @@ new Chart(impactCtx, {
     }
 });
 
-
-/* =========================
-   GRÁFICO DE LINHA
-========================= */
-
 const trendCtx = document.getElementById('trendChart');
 
 new Chart(trendCtx, {
@@ -427,11 +418,6 @@ new Chart(trendCtx, {
         maintainAspectRatio: false
     }
 });
-
-
-/* =========================
-   GRÁFICO RADAR
-========================= */
 
 const radarCtx = document.getElementById('radarChart');
 
