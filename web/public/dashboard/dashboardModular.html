@@ -12,10 +12,10 @@
 
     <!-- css -->
     <link rel="stylesheet" href="../css/dashboards.css">
-    <link rel="stylesheet" href="../css/style.css"
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/dashMonitores.css">
     <link rel="stylesheet" href="../css/dashUnidades.css">
-    <link rel="stylesheet" href="../css/dashmodular.css">
+    <link rel="stylesheet" href="../css/dashModular.css">
 
     <!-- fontes -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -161,10 +161,10 @@
         <div class="boxesModular">
            <div class="KpisMonitoresAntigos">
               <div class="containerKpiMA">
-                <div class="tituloKpi">
+                <div class="tituloKpi" style="font-weight: bolder;">
                   Módulo mais utilizado
                   <br>
-                  <h1 id="moduloutilizadoKPI" style="color: green;"></h1>
+                  <h1 id="moduloutilizadoKPI" style="color: green; font-weight: bold;">TEMP</h1>
                 </div>
                 <div class="imgKpiContainer" style="width: 100%;">
                   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -173,15 +173,15 @@
                 </svg>
                 </div>
               </div>
-              <span id="frequenciaKPI"></span>% de frequência
+              <span id="frequenciaKPI" style="font-weight: bolder;">90%</span> de frequência
             </div>
 
             <div class="KpisMonitoresAntigos">
               <div class="containerKpiMA">
-                <div class="tituloKpi">
+                <div class="tituloKpi" style="font-weight: bolder;">
                   Módulo mais Crítico
                   <br>
-                  <h1 id="modulocriticoKPI" style="color: #ff4b4b;"></h1>
+                  <h1 id="modulocriticoKPI" style="color: #ff4b4b; font-weight: bold;">TEMP</h1>
                 </div>
                 <div class="imgKpiContainer" style="width: 100%;">
                 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -191,15 +191,15 @@
                 <path d="M24 29H24.01" stroke="#E7000B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </div>
               </div>
-              <span id="ocorrenciasKPI"></span> ocorrências
+              <span id="ocorrenciasKPI" style="font-weight: bolder;">888</span> ocorrências
             </div>
 
             <div class="KpisMonitoresAntigos">
               <div class="containerKpiMA">
-                <div class="tituloKpi">
+                <div class="tituloKpi" style="font-weight: bolder;">
                   Estabilidade Geral
                   <br>
-                  <h1 id="estabilidadeKPI">%</h1>
+                  <h1 id="estabilidadeKPI" style="font-weight: bold;">40%</h1>
                 </div>
                 <div class="imgKpiContainer" style="width: 100%;">
                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -210,11 +210,119 @@
               </div>
             </div>
         </div>
+          <main class="dashboard-grid">
+
+        <div class="card large">
+            <div class="card-header" style="background-color: white;">
+                <h2>Módulo x Criticidade</h2>
+            </div>
+            <div class="table-scroll">
+            <table class="criticidade-table">
+                <thead>
+                <tr>
+                    <th>Módulo</th>
+                    <th>OK</th>
+                    <th>Alerta</th>
+                    <th>Crítico</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>BPM</td>
+                    <td class="ok-bg">45</td>
+                    <td class="warning-bg">8</td>
+                    <td class="critical-bg">2</td>
+                </tr>
+                <tr>
+                    <td>PA</td>
+                    <td class="ok-bg">42</td>
+                    <td class="warning-bg">10</td>
+                    <td class="critical-bg">3</td>
+                </tr>
+                <tr>
+                    <td>SPO2</td>
+                    <td class="ok-bg">38</td>
+                    <td class="warning-bg">12</td>
+                    <td class="critical-bg">5</td>
+                </tr>
+                <tr>
+                    <td>RESP</td>
+                    <td class="ok-bg">18</td>
+                    <td class="warning-bg">2</td>
+                    <td class="critical-bg">12</td>
+                </tr>
+                <tr>
+                    <td>TEMP</td>
+                    <td class="ok-bg">51</td>
+                    <td class="warning-bg">77</td>
+                    <td class="critical-bg">888</td>
+                </tr>
+                <tr>
+                    <td>PIC</td>
+                    <td class="ok-bg">2</td>
+                    <td class="warning-bg">25</td>
+                    <td class="critical-bg">89</td>
+                </tr>
+                <tr>
+                    <td>PVC</td>
+                    <td class="ok-bg">101</td>
+                    <td class="warning-bg">102</td>
+                    <td class="critical-bg">235</td>
+                </tr>
+                <tr>
+                    <td>ECG</td>
+                    <td class="ok-bg">75</td>
+                    <td class="warning-bg">570</td>
+                    <td class="critical-bg">71</td>
+                </tr>
+                <tr>
+                    <td>ETCO2</td>
+                    <td class="ok-bg">84</td>
+                    <td class="warning-bg">99</td>
+                    <td class="critical-bg">92</td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+        <div class="card large">
+            <div class="card-header" style="background-color: white;"> 
+                <h2>Módulo x Impacto Operacional</h2>
+            </div>
+            <div class="chart-container">
+            <canvas id="impactChart"></canvas>
+            </div>
+        </div>
+
+        <div class="card large">
+            <div class="card-header" style="background-color: white;">
+                <h2>Tendência de Uso dos Módulos</h2>
+            </div>
+            <div class="chart-container">
+            <canvas id="trendChart"></canvas>
+            </div>
+        </div>
+
+        <div class="card large">
+            <div class="card-header" style="background-color: white;">
+                <h2>Eficiência Modular Comparativa</h2>
+            </div>
+            <div class="chart-container">
+            <canvas id="radarChart"></canvas>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
     </div>
     
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="../js/sessao.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         const kpi1 = document.getElementById("moduloutilizadoKPI");
         const metakpi1 = document.getElementById("frequenciaKPI");
@@ -258,5 +366,97 @@
     function atualizar() {
         modelo = selectModelo.value;
     }
+
+    const modulos = ['BPM', 'PA', 'SPO2', 'RESP', 'TEMP', 'PIC', 'PVC', 'ECG', 'ETCO2'];
+
+/* =========================
+   GRÁFICO DE BARRAS
+========================= */
+
+const impactCtx = document.getElementById('impactChart');
+
+new Chart(impactCtx, {
+    type: 'bar',
+    data: {
+        labels: modulos,
+        datasets: [{
+            label: 'Impacto Operacional',
+            data: [40, 65, 50, 80, 95, 30, 45, 70, 60],
+            backgroundColor: [
+                '#4CAF50',
+                '#2196F3',
+                '#FF9800',
+                '#F44336',
+                '#9C27B0',
+                '#009688',
+                '#795548',
+                '#3F51B5',
+                '#607D8B'
+            ],
+            borderRadius: 8
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false
+    }
+});
+
+
+/* =========================
+   GRÁFICO DE LINHA
+========================= */
+
+const trendCtx = document.getElementById('trendChart');
+
+new Chart(trendCtx, {
+    type: 'line',
+    data: {
+        labels: modulos,
+        datasets: [{
+            label: 'Uso dos módulos',
+            data: [90, 70, 85, 50, 100, 35, 60, 95, 75],
+            borderColor: '#13347b',
+            backgroundColor: 'rgba(19, 52, 123, 0.2)',
+            tension: 0.4,
+            fill: true
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false
+    }
+});
+
+
+/* =========================
+   GRÁFICO RADAR
+========================= */
+
+const radarCtx = document.getElementById('radarChart');
+
+new Chart(radarCtx, {
+    type: 'radar',
+    data: {
+        labels: modulos,
+        datasets: [{
+            label: 'Eficiência',
+            data: [88, 72, 91, 60, 95, 40, 58, 84, 76],
+            borderColor: '#00A63E',
+            backgroundColor: 'rgba(0, 166, 62, 0.2)',
+            pointBackgroundColor: '#00A63E'
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            r: {
+                beginAtZero: true,
+                max: 100
+            }
+        }
+    }
+});
 
     </script>
